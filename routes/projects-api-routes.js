@@ -26,7 +26,7 @@ module.exports = function(app) {
       height: req.body.height,
       depth: req.body.depth,
       radius: req.body.radius,
-      area: req.body.radius,
+      area: req.body.area,
       parimeter: req.body.parameter,
       UserId: req.user.id
     })

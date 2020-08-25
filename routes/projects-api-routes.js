@@ -4,14 +4,10 @@ var db = require("../models");
 // GET route ===================================================
 module.exports = function(app) {
   app.get("/api/projects", function(req, res) {
-    var query = {};
-    if (req.query.user_id) {
-      query.UserId = req.query.user_id;
-    }
-    
     db.Project.findAll({
-      where: query,
-      include: [db.User]
+      where: {
+        UserId: req.user.id
+      }
     }).then(function(dbProject) {
       res.json(dbProject);
     });
@@ -40,7 +36,7 @@ module.exports = function(app) {
 
   // DELETE route ===============================================
   app.delete("/api/projects/:id", function(req, res) {
-    db.Projects.destroy({
+    db.Project.destroy({
       where: {
         id: req.params.id
       }
@@ -51,7 +47,7 @@ module.exports = function(app) {
 
   // PUT route =================================================
   app.put("/api/projects", function(req, res) {
-    db.Projects.update(req.body, {
+    db.Project.update(req.body, {
       where: {
         id: req.body.id
       }

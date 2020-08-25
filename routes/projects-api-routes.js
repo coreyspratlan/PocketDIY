@@ -27,7 +27,7 @@ module.exports = function(app) {
       depth: req.body.depth,
       radius: req.body.radius,
       area: req.body.area,
-      parimeter: req.body.parameter,
+      perimeter: req.body.perimeter,
       UserId: req.user.id
     })
       .then(function(dbProject) {

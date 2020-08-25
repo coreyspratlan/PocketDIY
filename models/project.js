@@ -20,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
       area:{
         type: DataTypes.INTEGER
       },
-      parimeter:{
+      perimeter:{
         type: DataTypes.INTEGER
       }
     });

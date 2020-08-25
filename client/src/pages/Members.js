@@ -15,7 +15,7 @@ function Members() {
       depth: 5,
       radius: 5,
       area: 5,
-      parimeter: 5
+      perimeter: 5
     };
     API.createProject(data)
     .catch(err => {

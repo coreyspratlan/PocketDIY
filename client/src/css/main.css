@@ -1,0 +1,49 @@
+.memberContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "title title"
+                         "shape1 shape2"
+                         "user1 user2"
+                         "projarea projarea"
+                         "footer footer"
+}
+
+.Title {
+    grid-area: title;
+}
+
+
+.shapeSection {
+    justify-self: center;
+    margin: 10px;
+}
+
+.squarediv {
+    grid-area: shape1;
+    justify-self: end;
+    margin-bottom: 50px;
+    margin-top: 20px;
+}
+
+.circlediv {
+    margin:10px
+}
+
+.inputSection1 {
+    justify-self: center;
+    grid-area: user1;
+}
+
+.inputSection2 {
+    justify-self: center;
+    grid-area: user2;
+}
+
+.projectSection {
+ border: 1px solid gray;
+ grid-area: projarea;
+}
+
+.footer {
+    grid-area: footer;
+}

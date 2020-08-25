@@ -1,0 +1,23 @@
+/* Shape card_________________*/
+
+.inputAreas { 
+    min-width: 40rem;
+    box-sizing: border-box;
+    padding: 20px;
+    border: 1px solid lightgray;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+.cardInputs {
+padding: 20px;
+
+}
+
+.userMzr {
+padding: 10px;
+}
+
+.unitSelect {
+margin: 10px;
+}

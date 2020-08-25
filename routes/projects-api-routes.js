@@ -20,7 +20,7 @@ module.exports = function(app) {
   // POST route ================================================
   app.post("/api/projects", function(req, res) {
     // Create a new post object
-    db.Projects.create({
+    db.Project.create({
       shape: req.body.shape,
       width: req.body.width,
       height: req.body.height,

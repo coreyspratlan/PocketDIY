@@ -7,7 +7,6 @@ import API from "../../src/utils/PROJECT_API";
 import Footer from "../components/Footer/Footer";
 import SquareCard from "../components/InputCard/squareCard";
 import CircleCard from "../components/InputCard/circleCard";
-import ProjectArea from "../components/ProjectSection/projectArea";
 import ShapeArea from "../components/ShapeSection/shapeArea";
 import drawing from '../images/181.png';
 import Figure from 'react-bootstrap/Figure';
@@ -40,19 +39,14 @@ function Members() {
         <Nav />
         <Switch>
           <Route exact path="/members">
-
-
             <div className='memberContainer'>
-
               <div className="Title" >
                 <h2>Welcome {email}</h2>
                 <button onClick={() => newProject()}>Test Project Save</button>
               </div>
-
               <div className="shapeSection">
                 <ShapeArea />
               </div>
-
               <Figure>
                 <Figure.Image
                   width={531}
@@ -61,33 +55,23 @@ function Members() {
                   src={drawing}
                 />
               </Figure>
-
-              <div className="inputSection1">
-                <SquareCard />
-              </div>
-
-              <div className="inputSection2">
-                <CircleCard />
-              </div>
-
-              <div className="projectSection">
-                <ProjectArea />
-              </div>
-
-              <div className="footer">
-                <Footer />
-              </div>
             </div>
-
-
-
 
           </Route>
           <Route exact path="/projects">
             <Projects />
           </Route>
         </Switch>
+        <Switch>
+                <Route exact path="/circle">
+                  <CircleCard/>
+                </Route>
+                <Route exact path="/square">
+                  <SquareCard/>
+                </Route>
+              </Switch>
       </div>
+      <Footer />
     </Router>
   )
 

@@ -16,13 +16,15 @@ function Members() {
 
   const newProject = (event) => {
     const data = {
+      name: "Project Name Here",
       shape: "circle",
       width: 5,
       height: 5,
       depth: 5,
       radius: 5,
       area: 5,
-      perimeter: 5
+      perimeter: 5,
+      unit: 2
     };
     API.createProject(data)
     .catch(err => {

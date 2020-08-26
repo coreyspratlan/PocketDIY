@@ -17,6 +17,7 @@ module.exports = function(app) {
   app.post("/api/projects", function(req, res) {
     // Create a new post object
     db.Project.create({
+      name: req.body.name,
       shape: req.body.shape,
       width: req.body.width,
       height: req.body.height,
@@ -24,6 +25,7 @@ module.exports = function(app) {
       radius: req.body.radius,
       area: req.body.area,
       perimeter: req.body.perimeter,
+      unit: req.body.unit,
       UserId: req.user.id
     })
       .then(function(dbProject) {

@@ -31,6 +31,8 @@ function Projects() {
           <ListItem key={project._id}>
             <a href={"/projects/" + project._id}>
             </a>
+            <h1>{project.name}
+            </h1>
             <h2>Created by: {project.UserId}
             </h2>
             <p>
@@ -53,6 +55,9 @@ function Projects() {
             </p>
             <p>
               Perimeter: {project.perimeter}
+            </p>
+            <p>
+              Unit: {project.unit}
             </p>
           </ListItem>
         );

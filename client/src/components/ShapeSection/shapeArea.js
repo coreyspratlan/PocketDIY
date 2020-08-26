@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button'
 import Figure from 'react-bootstrap/Figure';
 import square from '../../images/drawn-square.png';
 import circle from '../../images/drawn-circle.png';
+import {Link} from "react-router-dom";
 
 function ShapeArea() {
     return (
@@ -15,7 +16,7 @@ function ShapeArea() {
                         alt="171x180"
                         src={square}
                     />
-                    <Button>Square</Button>
+                    <Link to="/square">Square</Link>
             </Figure>
             </div>
 
@@ -27,7 +28,7 @@ function ShapeArea() {
                         alt="171x180"
                         src={circle}
                     />
-                    <Button>Circle</Button>
+                    <Link to="/circle">Circle</Link>
             </Figure>
             </div>
         </div>

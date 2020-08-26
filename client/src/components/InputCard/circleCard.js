@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState} from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
@@ -107,7 +107,7 @@ class CircleCard extends Component {
 
                     <Row>
                         <Col>
-                            <Form.Control placeholder="Radius" />
+                            <Form.Control placeholder="Radius"/>
                         </Col>
                         <Col>
                             <Form.Control
@@ -124,7 +124,7 @@ class CircleCard extends Component {
                     </Row>
                     <Row>
                         <Col>
-                            <Form.Control placeholder="Diameter" />
+                            <Form.Control placeholder="Perimeter"/>
                         </Col>
                         <Col>
                             <Form.Control

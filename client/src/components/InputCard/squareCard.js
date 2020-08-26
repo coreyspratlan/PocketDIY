@@ -1,12 +1,50 @@
-import React, { Component } from 'react'
+import React,{useState,Component} from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import '../InputCard/card.css';
+import API from "../../utils/PROJECT_API";
 import ProjectArea from "../ProjectSection/projectArea";
+// import {ProjectContext} from '../../utils/ProjectContext';
 
 class SquareCard extends Component{
+
+    state = {
+
+        name: "My Project",
+        shape: "square",
+        width: "",
+        height: "",
+        perimeter: "",
+        area: "",
+        unit: 1
+    };
+
+
+    changeValue= (e) => {
+        const value = e.target.value;
+        const name = e.target.name;
+        this.setState({[name]: value});
+    }
+
+
+
+    addProject=(e) => {
+        e.preventDefault();
+
+        API.createProject(this.state)
+            .catch(err => {
+                alert("An error has occured")
+            })
+            this.setState({
+                name: "My Project",
+                shape: "square",
+                width: "",
+                height: "",
+                unit: 1
+            })
+    };
 
     handleFormSubmit = event => {
         const { Name, Width, Height, Perimeter, Area, Unit } = this.state
@@ -113,11 +151,11 @@ class SquareCard extends Component{
     return (
         <div className='inputAreas'>
             <h5> Square </h5>
-            <Form className="cardInputs">
+            <Form className="cardInputs" onSubmit={this.addProject}>
 
                 <Row>
                     <Col>
-                        <Form.Control placeholder="Width" />
+                        <Form.Control placeholder="Width"  name="width" value={this.state.width} onChange={this.changeValue} />
                     </Col>
                     <Col>
                         <Form.Control
@@ -134,7 +172,7 @@ class SquareCard extends Component{
                 </Row>
                 <Row>
                     <Col>
-                        <Form.Control placeholder="Height" />
+                        <Form.Control placeholder="Height"  name="height" value={this.state.height} onChange={this.changeValue} />
                     </Col>
                     <Col>
                         <Form.Control
@@ -162,4 +200,4 @@ class SquareCard extends Component{
     }
 }
 
-export default SquareCard;
+export default SquareCard

@@ -2,11 +2,11 @@ module.exports = function(sequelize, DataTypes) {
 
     var Project = sequelize.define("Project", {
       name: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING
       },
       shape:{
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: false
       },
       width:{
         type: DataTypes.INTEGER
@@ -27,7 +27,7 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.INTEGER
       },
       unit: {
-        type: DataTypes.INTEGER
+        type: DataTypes.STRING
       }
     });
 

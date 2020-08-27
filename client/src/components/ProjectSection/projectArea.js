@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from'react-bootstrap/Button';
 
 function ProjectArea() {
 
@@ -12,8 +11,6 @@ function ProjectArea() {
         <div className="projectInfo" style={styles}>
             <h1>Project Name</h1>
             <p>Project parameters</p>
-
-            <Button>Save Project</Button>
         </div>
     )
 }

@@ -1,6 +1,11 @@
 module.exports = function(sequelize, DataTypes) {
 
     var Project = sequelize.define("Project", {
+      uuid: {
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV1,
+        primaryKey: true
+      },
       name: {
         type: DataTypes.STRING
       },
@@ -24,6 +29,9 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.INTEGER
       },
       perimeter:{
+        type: DataTypes.INTEGER
+      },
+      volume:{
         type: DataTypes.INTEGER
       },
       unit: {

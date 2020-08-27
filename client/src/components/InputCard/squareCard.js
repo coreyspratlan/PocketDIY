@@ -6,6 +6,7 @@ import Row from 'react-bootstrap/Row';
 import '../InputCard/card.css';
 import API from "../../utils/PROJECT_API";
 import ProjectArea from "../ProjectSection/projectArea";
+import { Redirect } from "react-router-dom"
 
 class SquareCard extends Component {
     state = {
@@ -17,7 +18,8 @@ class SquareCard extends Component {
                 area: "",
                 unit: "",
                 radius: 0,
-                depth: 0
+                depth: 0,
+                routePath: ""
     };
 
     changeValue = (e) => {
@@ -46,7 +48,8 @@ class SquareCard extends Component {
                 area: "",
                 unit: "",
                 radius: "",
-                depth: ""
+                depth: "",
+                routePath: "/members"
             })
         };
     }
@@ -101,6 +104,9 @@ class SquareCard extends Component {
     };
 
     render() {
+        if (this.state.routePath !== "") {
+            return <Redirect to={this.state.routePath}/>
+        }
         return (
             <div className='inputareas'>
                 <h5> Square </h5>

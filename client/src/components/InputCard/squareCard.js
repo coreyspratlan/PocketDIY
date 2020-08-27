@@ -1,4 +1,4 @@
-import React,{useState,Component} from 'react';
+import React, { useState, Component } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
@@ -6,197 +6,149 @@ import Row from 'react-bootstrap/Row';
 import '../InputCard/card.css';
 import API from "../../utils/PROJECT_API";
 import ProjectArea from "../ProjectSection/projectArea";
-// import {ProjectContext} from '../../utils/ProjectContext';
 
-class SquareCard extends Component{
-
+class SquareCard extends Component {
     state = {
-
         name: "My Project",
-        shape: "square",
-        width: "",
-        height: "",
-        perimeter: "",
-        area: "",
-        unit: 1
+                shape: "square",
+                width: "",
+                height: "",
+                perimeter: "",
+                area: "",
+                unit: "",
+                radius: 0,
+                depth: 0
     };
 
-
-    changeValue= (e) => {
+    changeValue = (e) => {
         const value = e.target.value;
         const name = e.target.name;
-        this.setState({[name]: value});
+        this.setState({ [name]: value });
     }
 
-
-
-    addProject=(e) => {
+    addProject = (e) => {
         e.preventDefault();
-
-        API.createProject(this.state)
-            .catch(err => {
-                alert("An error has occured")
-            })
+        console.log(this.state);
+        if (this.state.name.trim().length === 0) {
+            alert('Fill out a project name');
+            return;
+        } else {
+            API.createProject(this.state)
+                .catch(err => {
+                    alert("An error has occured")
+                })
             this.setState({
                 name: "My Project",
                 shape: "square",
                 width: "",
                 height: "",
-                unit: 1
+                perimeter: "",
+                area: "",
+                unit: "",
+                radius: "",
+                depth: ""
             })
-    };
+        };
+    }
 
     handleFormSubmit = event => {
-        const { Name, Width, Height, Perimeter, Area, Unit } = this.state
         event.preventDefault();
-        if (Width.trim().length === 0 && Height.trim().length === 0) {
-            alert('Fill out Width or Height');
+        const { name, width, height, perimeter, area, unit } = this.state
+        if (width.trim().length === 0 && height.trim().length === 0) {
+            alert('Fill out width or height');
             this.setState({
-                Name: "",
-                Width: "",
-                Height: "",
-                Perimeter: "",
-                Area: ""
+                name: "",
+                width: "",
+                height: "",
+                perimeter: "",
+                area: ""
             });
             return;
-        } else if (Width.trim().length !== 0 && Height.trim().length !== 0) {
-            alert('Fill out Width  OR  Height');
+        } else if (width.trim().length !== 0 && height.trim().length !== 0) {
+            alert('Fill out width  OR  height');
             this.setState({
-                Name: "",
-                Width: "",
-                Height: "",
-                Perimeter: "",
-                Area: ""
+                name: "",
+                width: "",
+                height: "",
+                perimeter: "",
+                area: ""
             });
             return;
-        } else if (Name.trim().length !== 0) {
-            alert('Fill out a project name');
-            this.setState({
-                Name: "",
-                Width: "",
-                Height: "",
-                Perimeter: "",
-                Area: ""
-            });
-            return;
-        }else if (Unit === 0) {
+        } else if (unit === "") {
             alert('Please select a unit');
             this.setState({
-                Name: "",
-                Width: "",
-                Height: "",
-                Perimeter: "",
-                Area: ""
+                name: "",
+                width: "",
+                height: "",
+                perimeter: "",
+                area: ""
             });
             return;
-        } else if (Unit === 1 && Width.trim().length === 0) {
-            Height = Height.trim() * 2.54;
-            Perimeter = Height * 4;
-            Area = Height * Height
-            let newSquare = { Name, Width, Height, Perimeter, Area, Unit }
+        } else if (width.trim().length === 0) {
+            this.setState({ width: height })
+            this.setState({ perimeter: height * 4 })
+            this.setState({ area: height * height })
+            let newSquare = { name, width, height, perimeter, area, unit }
             this.setState({ Square: newSquare })
-            this.setState({
-                Name: "",
-                Width: "",
-                Height: "",
-                Perimeter: "",
-                Area: "",
-                Unit: ""
-            });
-        } else if (Unit === 1 && Height.trim().length === 0) {
-            Width = Width.trim() * 2.54;
-            Perimeter = Width * 4;
-            Area = Width * Width
-            let newSquare = { Name, Width, Height, Perimeter, Area, Unit }
-            this.setState({ Square: newSquare })
-            this.setState({
-                Name: "",
-                Width: "",
-                Height: "",
-                Perimeter: "",
-                Area: "",
-                Unit: ""
-            });
-        } 
-        else if (Height.trim().length === 0) {
-            Perimeter = Width * 4;
-            Area = Width * Width
-            let newSquare = { Name, Width, Height, Perimeter, Area, Unit }
-            this.setState({ Square: newSquare })
-            this.setState({
-                Name: "",
-                Width: "",
-                Height: "",
-                Perimeter: "",
-                Area: "",
-                Unit: ""
-            });
         } else {
-            Perimeter = Height * 4;
-            Area = Height * Height
-            let newSquare = { Name, Width, Height, Perimeter, Area, Unit }
+            this.setState({ height: width })
+            this.setState({ perimeter: width * 4 })
+            this.setState({ area: width * width })
+            let newSquare = { name, width, height, perimeter, area, unit }
             this.setState({ Square: newSquare })
-            this.setState({
-                Name: "",
-                Width: "",
-                Height: "",
-                Perimeter: "",
-                Area: "",
-                Unit: ""
-            });
-        };
+
+        }
     };
 
-    render () {
-    return (
-        <div className='inputAreas'>
-            <h5> Square </h5>
-            <Form className="cardInputs" onSubmit={this.addProject}>
+    render() {
+        return (
+            <div className='inputareas'>
+                <h5> Square </h5>
+                <Form className="cardInputs">
 
-                <Row>
-                    <Col>
-                        <Form.Control placeholder="Width"  name="width" value={this.state.width} onChange={this.changeValue} />
-                    </Col>
-                    <Col>
-                        <Form.Control
-                            as="select"
-                            className="unitSelect"
-                            id="inlineFormCustomSelect"
-                            custom
-                        >
-                            <option value="0">Choose...</option>
-                            <option value="1">Inches</option>
-                            <option value="2">Centimeters</option>
-                        </Form.Control>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <Form.Control placeholder="Height"  name="height" value={this.state.height} onChange={this.changeValue} />
-                    </Col>
-                    <Col>
-                        <Form.Control
-                            as="select"
-                            className="unitSelect"
-                            id="inlineFormCustomSelect"
-                            custom
-                        >
-                            <option value="0">Choose...</option>
-                            <option value="1">Inches</option>
-                            <option value="2">Centimeters</option>
-                        </Form.Control>
-                    </Col>
-                </Row>
+                    <Row>
+                        <Col>
+                            <Form.Control placeholder="width" name="width" value={this.state.width} onChange={this.changeValue} />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <Form.Control placeholder="height" name="height" value={this.state.height} onChange={this.changeValue} />
+                        </Col>
+                        <Col>
+                            <Form.Control
+                                as="select"
+                                className="unitSelect"
+                                id="inlineFormCustomSelect"
+                                name="unit"
+                                custom
+                                onChange={this.changeValue}
+                                value={this.state.unit}
+                            >
+                                <option value="" >Choose...</option>
+                                <option value="in">Inches</option>
+                                <option value="cm">Centimeters</option>
+                            </Form.Control>
+                        </Col>
+                    </Row>
 
-                <Col xs="auto" className="my-1">
-                    <Button type="submit" onClick={this.handleFormSubmit} >Submit</Button>
-                </Col>
-            </Form>
-            <div className="projectSection">
-                <ProjectArea />
+                    <Col xs="auto" className="my-1">
+                        <Button type="submit" onClick={this.handleFormSubmit} >Submit</Button>
+                    </Col>
+                </Form>
+                <div className="projectSection">
+                    <Col>
+                        <Form.Control placeholder="Project Name" name="name" value={this.state.name} onChange={this.changeValue} />
+                    </Col>
+                    <p>Shape: {this.state.shape}</p>
+                    <p>Width: {this.state.width} {this.state.unit}</p>
+                    <p>Height: {this.state.height} {this.state.unit}</p>
+                    <p>Perimeter: {this.state.perimeter} {this.state.unit}</p>
+                    <p>Area: {this.state.area} {this.state.unit}^2</p>
+                    <Button onClick={this.addProject}>Save Project</Button>
+                </div>
             </div>
-        </div>
-    )
+        )
     }
 }
 

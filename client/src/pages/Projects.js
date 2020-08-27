@@ -5,6 +5,9 @@ import Jumbotron from "../components/Jumbotron";
 import { SavedProject } from "../components/ProjectSection/savedProject";
 import API from "../utils/PROJECT_API"
 import { ListItem } from "../components/List";
+import square from '../images/drawn-square.png';
+import circle from '../images/drawn-circle.png';
+import Figure from 'react-bootstrap/Figure';
 // class Projects extends Component 
 function Projects() {
 
@@ -22,6 +25,7 @@ function Projects() {
       .catch(err => console.log(err));
   };
 
+
   return (
     <Container fluid>
       <h1>Projects</h1>
@@ -31,13 +35,27 @@ function Projects() {
           <ListItem key={project._id}>
             <a href={"/projects/" + project._id}>
             </a>
-            <h1>{project.name}
-            </h1>
-            <h2>Created by: {project.UserId}
+            <h2>Created by: {project.name}
             </h2>
             <p>
-              Shape: {project.shape}
+              Shape:
             </p>
+            <Figure>
+              
+                    <Figure.Image
+                    
+                        width={201}
+                        height={210}
+                        alt="171x180"
+                        src={(() => {
+                          switch (project.shape) {
+                            case "circle":   return circle;
+                            case "square": return square;
+                            default:      return "";
+                          }
+                        })()}
+                    />
+            </Figure>
             <p>
               Width: {project.width}
             </p>

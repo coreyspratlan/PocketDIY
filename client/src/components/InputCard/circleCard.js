@@ -1,4 +1,4 @@
-import React, { Component, useState} from "react";
+import React, { Component, useState } from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
@@ -8,153 +8,143 @@ import '../../css/main.css';
 import ProjectArea from "../ProjectSection/projectArea";
 import Figure from 'react-bootstrap/Figure';
 import drawing from '../../images/181.png';
+import API from "../../utils/PROJECT_API";
 
 class CircleCard extends Component {
+    state = {
+        name: "My Project",
+        shape: "circle",
+        width: 0,
+        height: 0,
+        perimeter: "",
+        area: "",
+        unit: "",
+        radius: "",
+        depth: 0,
+        diameter: ""
+    };
+
+    changeValue = (e) => {
+        const value = e.target.value;
+        const name = e.target.name;
+        this.setState({ [name]: value });
+    }
+
+    addProject = (e) => {
+        e.preventDefault();
+        console.log(this.state);
+        if (this.state.name.trim().length === 0) {
+            alert('Fill out a project name');
+            return;
+        } else {
+            API.createProject(this.state)
+                .catch(err => {
+                    alert("An error has occured")
+                })
+            this.setState({
+                name: "My Project",
+                shape: "square",
+                width: "",
+                height: "",
+                perimeter: "",
+                area: "",
+                unit: "",
+                radius: "",
+                depth: "",
+                diameter: ""
+            })
+        };
+    }
 
     handleFormSubmit = event => {
-        const { Radius, Diameter, Perimeter, Area, Unit } = this.state
+        const { radius, diameter, perimeter, area, unit } = this.state
         event.preventDefault();
-        if (Radius.trim().length === 0 && Diameter.trim().length === 0) {
+        if (radius.trim().length === 0 && diameter.trim().length === 0) {
             alert('Fill out radius or diameter');
             this.setState({
-                Name: "",
-                Radius: "",
-                Diameter: ""
+                name: "",
+                radius: "",
+                diameter: ""
             });
             return;
-        } else if (Radius.trim().length !== 0 && Diameter.trim().length !== 0) {
+        } else if (radius.trim().length !== 0 && diameter.trim().length !== 0) {
             alert('Fill out radius  OR  diameter');
             this.setState({
-                Name: "",
-                Radius: "",
-                Diameter: ""
+                name: "",
+                radius: "",
+                diameter: ""
             });
             return;
-        } else if (Unit === 0) {
+        } else if (unit === "") {
             alert('Please select a unit');
             this.setState({
-                Name: "",
-                Radius: "",
-                Diameter: ""
+                name: "",
+                radius: "",
+                diameter: ""
             });
             return;
-        } else if (Unit === 1 && Radius.trim().length !== 0) {
-            Radius = Radius.trim() * 2.54;
-            Diameter = Radius * 2;
-            Perimeter = Radius * 6.28318;
-            Area = Radius * Radius * 3.14159;
-            let newCircle = { Radius, Diameter, Perimeter, Area, Unit }
-            this.setState({ Circle: newCircle })
-            this.setState({
-                Name: "",
-                Radius: "",
-                Diameter: "",
-                Perimeter: "",
-                Area: "",
-                Unit: ""
-            });
-        } else if (Unit === 1 && Diameter.trim().length !== 0) {
-            Diameter = Diameter.trim() * 2.54;
-            Radius = Diameter.trim() / 2;
-            Perimeter = Radius * 6.28318;
-            Area = Radius * Radius * 3.14159;
-            let newCircle = { Radius, Diameter, Perimeter, Area, Unit }
-            this.setState({ Circle: newCircle })
-            this.setState({
-                Name: "",
-                Radius: "",
-                Diameter: "",
-                Perimeter: "",
-                Area: "",
-                Unit: ""
-            });
-        } else if (Diameter.trim().length !== 0) {
-            Radius = Diameter.trim() / 2;
-            Perimeter = Radius * 6.28318;
-            Area = Radius * Radius * 3.14159;
-            let newCircle = { Radius, Diameter, Perimeter, Area, Unit }
-            this.setState({ Circle: newCircle })
-            this.setState({
-                Name: "",
-                Radius: "",
-                Diameter: "",
-                Perimeter: "",
-                Area: "",
-                Unit: ""
-            });
+        } else if (diameter.trim().length !== 0) {
+            this.setState({ radius: diameter / 2 });
+            this.setState({ perimeter: radius * 6.28318 });
+            this.setState({ area: radius * radius * 3.14159 });
+            let newCircle = { radius, diameter, perimeter, area, unit };
+            this.setState({ Circle: newCircle });
         } else {
-            Diameter = Radius * 2;
-            Perimeter = Radius * 6.28318;
-            Area = Radius * Radius * 3.14159;
-            let newCircle = { Radius, Diameter, Perimeter, Area, Unit }
-            this.setState({ Circle: newCircle })
-            this.setState({
-                Name: "",
-                Radius: "",
-                Diameter: "",
-                Perimeter: "",
-                Area: "",
-                Unit: ""
-            });
+            this.setState({ diameter: radius * 2 });
+            this.setState({ perimeter: radius * 6.28318 });
+            this.setState({ area: radius * radius * 3.14159 });
+            let newCircle = { radius, diameter, perimeter, area, unit }
+            this.setState({ Circle: newCircle });
         };
     };
 
     render() {
         return (
-            <div className='inputAreas'>
+            <div classname='inputareas'>
                 <h5> Circle </h5>
-                <Form className="cardInputs">
+                <Form classname="cardInputs">
 
                     <Row>
                         <Col>
-                            <Form.Control placeholder="Radius"/>
+                            <Form.Control placeholder="radius" name="radius" value={this.state.radius} onChange={this.changeValue} />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <Form.Control placeholder="diameter" name="diameter" value={this.state.diameter} onChange={this.changeValue} />
                         </Col>
                         <Col>
                             <Form.Control
                                 as="select"
                                 className="unitSelect"
                                 id="inlineFormCustomSelect"
+                                name="unit"
                                 custom
+                                onChange={this.changeValue}
+                                value={this.state.unit}
                             >
-                                <option value="0">Choose...</option>
-                                <option value="1">Inches</option>
-                                <option value="2">Centimeters</option>
-                            </Form.Control>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <Form.Control placeholder="Perimeter"/>
-                        </Col>
-                        <Col>
-                            <Form.Control
-                                as="select"
-                                className="unitSelect"
-                                id="inlineFormCustomSelect"
-                                custom
-                            >
-                                <option value="0">Choose...</option>
-                                <option value="1">Inches</option>
-                                <option value="2">Centimeters</option>
+                                <option value="" >Choose...</option>
+                                <option value="in">Inches</option>
+                                <option value="cm">Centimeters</option>
                             </Form.Control>
                         </Col>
                     </Row>
 
-                    <Col xs="auto" className="my-1">
+                    <Col xs="auto" classname="my-1">
                         <Button type="submit" onClick={this.handleFormSubmit} >Submit</Button>
                     </Col>
                 </Form>
-                <div className="projectSection">
-                    <ProjectArea />
+                <div classname="projectSection">
+                    <Col>
+                        <Form.Control placeholder="Project Name" name="name" value={this.state.name} onChange={this.changeValue} />
+                    </Col>
+                    <p>Shape: {this.state.shape}</p>
+                    <p>Radius: {this.state.radius} {this.state.unit}</p>
+                    <p>Diameter: {this.state.diameter} {this.state.unit}</p>
+                    <p>Perimeter: {this.state.perimeter} {this.state.unit}</p>
+                    <p>Area: {this.state.area} {this.state.unit}^2</p>
+                    <Button onClick={this.addProject}>Save Project</Button>
                 </div>
-                <Figure>
-                    <Figure.Image
-                        width={531}
-                        height={540}
-                        alt="171x180"
-                        src={drawing}
-                    />
-                </Figure>
             </div>
         )
     }

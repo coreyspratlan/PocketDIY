@@ -9,6 +9,8 @@ import ProjectArea from "../ProjectSection/projectArea";
 import Figure from 'react-bootstrap/Figure';
 import drawing from '../../images/181.png';
 import API from "../../utils/PROJECT_API";
+import { Redirect } from "react-router-dom"
+
 
 class CircleCard extends Component {
     state = {
@@ -21,7 +23,8 @@ class CircleCard extends Component {
         unit: "",
         radius: "",
         depth: 0,
-        diameter: ""
+        diameter: "",
+        routePath: ""
     };
 
     changeValue = (e) => {
@@ -51,8 +54,9 @@ class CircleCard extends Component {
                 unit: "",
                 radius: "",
                 depth: "",
-                diameter: ""
-            })
+                diameter: "",
+                routePath: "/members"
+            });
         };
     }
 
@@ -99,6 +103,9 @@ class CircleCard extends Component {
     };
 
     render() {
+        if (this.state.routePath !== "") {
+            return <Redirect to={this.state.routePath}/>
+        }
         return (
             <div classname='inputareas'>
                 <h5> Circle </h5>

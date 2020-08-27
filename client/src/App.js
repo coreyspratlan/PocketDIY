@@ -86,7 +86,7 @@ function App() {
                     }
                     <Route>
                         { /*If none of the other pages match, redirect them to the main page */}
-                        <Redirect to="/" />
+                        <Redirect to="/login" />
                     </Route>
                 </Switch>
 

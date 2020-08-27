@@ -33,7 +33,7 @@ function Signup() {
     }
 
     return <div>
-        <div className="container">
+        <div className="container signuppage">
             <div className="row">
                 <div className="col-md-6 col-md-offset-3">
                     <h2>Sign Up Form</h2>
@@ -52,6 +52,7 @@ function Signup() {
                         </div>
                         <button type="submit" className="btn btn-default">Sign Up</button>
                     </form>
+                    <br />
                     <br />
                     <p>Or log in <Link to="/login">here</Link></p>
                 </div>

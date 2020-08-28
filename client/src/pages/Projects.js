@@ -35,7 +35,7 @@ function Projects() {
     <Container className="text-center">
       <h1 className="text-center"><b>Projects</b></h1>
 
-      {projects.map(project => {
+      {projects.slice(0).reverse().map(project => {
         return (
           <ListItem key={project.uuid}>
             <a href={"/projects/" + project.uuid}>

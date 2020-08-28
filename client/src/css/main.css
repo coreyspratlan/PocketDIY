@@ -83,6 +83,12 @@ h2 {
     margin-top: 20px;
 }
 
+.trianglediv {
+    justify-self: end;
+    margin-bottom: 50px;
+    margin-top: 20px;
+}
+
 .inputSection1 {
     justify-self: center;
 }

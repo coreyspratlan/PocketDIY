@@ -1,11 +1,10 @@
-import React, { useState, Component } from 'react';
+import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import '../InputCard/card.css';
 import API from "../../utils/PROJECT_API";
-import ProjectArea from "../ProjectSection/projectArea";
 import { Redirect } from "react-router-dom"
 
 class TriangleCard extends Component {
@@ -19,7 +18,8 @@ class TriangleCard extends Component {
         unit: "",
         radius: 0,
         depth: 0,
-        routePath: ""
+        routePath: "",
+        submit: ""
     };
 
     changeValue = (e) => {
@@ -30,27 +30,30 @@ class TriangleCard extends Component {
 
     addProject = (e) => {
         e.preventDefault();
-        console.log(this.state);
         if (this.state.name.trim().length === 0) {
             alert('Fill out a project name');
             return;
         } else {
             API.createProject(this.state)
+                .then(() => {
+                    this.setState({
+                        name: "My Project",
+                        shape: "triangle",
+                        width: "",
+                        height: "",
+                        perimeter: "",
+                        area: "",
+                        unit: "",
+                        radius: "",
+                        depth: "",
+                        routePath: "/projects",
+                        submit: ""
+                    })
+                })
                 .catch(err => {
                     alert("An error has occured")
                 })
-            this.setState({
-                name: "My Project",
-                shape: "triangle",
-                width: "",
-                height: "",
-                perimeter: "",
-                area: "",
-                unit: "",
-                radius: "",
-                depth: "",
-                routePath: "/members"
-            })
+
         };
     }
 
@@ -83,6 +86,7 @@ class TriangleCard extends Component {
             this.setState({ area: (height * width) / 2 })
             let newTriangle = { name, width, height, perimeter, area, unit }
             this.setState({ Triangle: newTriangle })
+            this.setState({ submit: "Submit" })
         }
     };
 
@@ -125,17 +129,21 @@ class TriangleCard extends Component {
                         <Button type="submit" onClick={this.handleFormSubmit} >Submit</Button>
                     </Col>
                 </Form>
-                <div className="projectSection">
-                    <Col>
-                        <Form.Control placeholder="Project Name" name="name" value={this.state.name} onChange={this.changeValue} />
-                    </Col>
-                    <p>Shape: {this.state.shape}</p>
-                    <p>Width: {this.state.width} {this.state.unit}</p>
-                    <p>Height: {this.state.height} {this.state.unit}</p>
-                    <p>Perimeter: {this.state.perimeter} {this.state.unit}</p>
-                    <p>Area: {this.state.area} {this.state.unit}^2</p>
-                    <Button onClick={this.addProject}>Save Project</Button>
-                </div>
+                {
+                    this.state.submit === "Submit" &&
+
+                    <div className="projectSection">
+                        <Col>
+                            <Form.Control placeholder="Project Name" name="name" value={this.state.name} onChange={this.changeValue} />
+                        </Col>
+                        <p>Shape: {this.state.shape}</p>
+                        <p>Width: {this.state.width} {this.state.unit}</p>
+                        <p>Height: {this.state.height} {this.state.unit}</p>
+                        <p>Perimeter: {this.state.perimeter} {this.state.unit}</p>
+                        <p>Area: {this.state.area} {this.state.unit}^2</p>
+                        <Button onClick={this.addProject}>Save Project</Button>
+                    </div>
+                }
             </div>
         )
     }

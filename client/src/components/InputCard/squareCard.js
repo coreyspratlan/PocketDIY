@@ -18,7 +18,8 @@ class SquareCard extends Component {
         unit: "",
         radius: 0,
         depth: 0,
-        routePath: ""
+        routePath: "",
+        submit: ""
     };
 
     changeValue = (e) => {
@@ -34,24 +35,25 @@ class SquareCard extends Component {
             return;
         } else {
             API.createProject(this.state)
-            .then(()=> {
-                this.setState({
-                    name: "My Project",
-                    shape: "square",
-                    width: "",
-                    height: "",
-                    perimeter: "",
-                    area: "",
-                    unit: "",
-                    radius: "",
-                    depth: "",
-                    routePath: "/projects"
+                .then(() => {
+                    this.setState({
+                        name: "My Project",
+                        shape: "square",
+                        width: "",
+                        height: "",
+                        perimeter: "",
+                        area: "",
+                        unit: "",
+                        radius: "",
+                        depth: "",
+                        routePath: "/projects",
+                        submit: ""
+                    })
                 })
-            })
                 .catch(err => {
                     alert("An error has occured")
                 })
-            
+
         };
     }
 
@@ -94,12 +96,15 @@ class SquareCard extends Component {
             this.setState({ area: height * height })
             let newSquare = { name, width, height, perimeter, area, unit }
             this.setState({ Square: newSquare })
+            this.setState({ submit: "Submit" })
+
         } else {
             this.setState({ height: width })
             this.setState({ perimeter: width * 4 })
             this.setState({ area: width * width })
             let newSquare = { name, width, height, perimeter, area, unit }
             this.setState({ Square: newSquare })
+            this.setState({ submit: "Submit" })
 
         }
     };
@@ -140,17 +145,22 @@ class SquareCard extends Component {
                         <Button type="submit" onClick={this.handleFormSubmit} >Submit</Button>
                     </Col>
                 </Form>
-                <div className="projectSection">
-                    <Col>
-                        <Form.Control placeholder="Project Name" name="name" value={this.state.name} onChange={this.changeValue} />
-                    </Col>
-                    <p>Shape: {this.state.shape}</p>
-                    <p>Width: {this.state.width} {this.state.unit}</p>
-                    <p>Height: {this.state.height} {this.state.unit}</p>
-                    <p>Perimeter: {this.state.perimeter} {this.state.unit}</p>
-                    <p>Area: {this.state.area} {this.state.unit}^2</p>
-                    <Button onClick={this.addProject}>Save Project</Button>
-                </div>
+                {
+
+                    this.state.submit === "Submit" &&
+
+                    <div className="projectSection">
+                        <Col>
+                            <Form.Control placeholder="Project Name" name="name" value={this.state.name} onChange={this.changeValue} />
+                        </Col>
+                        <p>Shape: {this.state.shape}</p>
+                        <p>Width: {this.state.width} {this.state.unit}</p>
+                        <p>Height: {this.state.height} {this.state.unit}</p>
+                        <p>Perimeter: {this.state.perimeter} {this.state.unit}</p>
+                        <p>Area: {this.state.area} {this.state.unit}^2</p>
+                        <Button onClick={this.addProject}>Save Project</Button>
+                    </div>
+                }
             </div>
         )
     }

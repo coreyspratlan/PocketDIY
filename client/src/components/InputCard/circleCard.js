@@ -21,7 +21,8 @@ class CircleCard extends Component {
         radius: "",
         depth: 0,
         diameter: "",
-        routePath: ""
+        routePath: "",
+        submit: ""
     };
 
     changeValue = (e) => {
@@ -37,25 +38,26 @@ class CircleCard extends Component {
             return;
         } else {
             API.createProject(this.state)
-            .then(
-                this.setState({
-                    name: "My Project",
-                    shape: "square",
-                    width: "",
-                    height: "",
-                    perimeter: "",
-                    area: "",
-                    unit: "",
-                    radius: "",
-                    depth: "",
-                    diameter: "",
-                    routePath: "/projects"
-                })
-            )
+                .then(
+                    this.setState({
+                        name: "My Project",
+                        shape: "square",
+                        width: "",
+                        height: "",
+                        perimeter: "",
+                        area: "",
+                        unit: "",
+                        radius: "",
+                        depth: "",
+                        diameter: "",
+                        routePath: "/projects",
+                        submit: ""
+                    })
+                )
                 .catch(err => {
                     alert("An error has occured")
                 })
-            
+
         };
     }
 
@@ -92,12 +94,15 @@ class CircleCard extends Component {
             this.setState({ area: radius * radius * 3.14159 });
             let newCircle = { radius, diameter, perimeter, area, unit };
             this.setState({ Circle: newCircle });
+            this.setState({ submit: "Submit" })
         } else {
             this.setState({ diameter: radius * 2 });
             this.setState({ perimeter: radius * 6.28318 });
             this.setState({ area: radius * radius * 3.14159 });
             let newCircle = { radius, diameter, perimeter, area, unit }
             this.setState({ Circle: newCircle });
+            this.setState({ submit: "Submit" })
+
         };
     };
 
@@ -140,17 +145,21 @@ class CircleCard extends Component {
                         <Button type="submit" onClick={this.handleFormSubmit} >Submit</Button>
                     </Col>
                 </Form>
-                <div classname="projectSection">
-                    <Col>
-                        <Form.Control placeholder="Project Name" name="name" value={this.state.name} onChange={this.changeValue} />
-                    </Col>
-                    <p>Shape: {this.state.shape}</p>
-                    <p>Radius: {this.state.radius} {this.state.unit}</p>
-                    <p>Diameter: {this.state.diameter} {this.state.unit}</p>
-                    <p>Perimeter: {this.state.perimeter} {this.state.unit}</p>
-                    <p>Area: {this.state.area} {this.state.unit}^2</p>
-                    <Button onClick={this.addProject}>Save Project</Button>
-                </div>
+                {
+                    this.state.submit === "Submit" &&
+
+                    <div classname="projectSection">
+                        <Col>
+                            <Form.Control placeholder="Project Name" name="name" value={this.state.name} onChange={this.changeValue} />
+                        </Col>
+                        <p>Shape: {this.state.shape}</p>
+                        <p>Radius: {this.state.radius} {this.state.unit}</p>
+                        <p>Diameter: {this.state.diameter} {this.state.unit}</p>
+                        <p>Perimeter: {this.state.perimeter} {this.state.unit}</p>
+                        <p>Area: {this.state.area} {this.state.unit}^2</p>
+                        <Button onClick={this.addProject}>Save Project</Button>
+                    </div>
+                }
             </div>
         )
     }

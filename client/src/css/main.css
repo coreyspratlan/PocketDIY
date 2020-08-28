@@ -102,13 +102,14 @@ h2 {
 }
 
 .footer {
-    grid-area: footer;
+    /* grid-area: footer; */
+    position: absolute;
+    bottom: 0px;
+    width: 100%; 
 }
 
 
 /* LoginPage & Sign Up Page_________________________________________________________________________*/
-
-
 
 .loginpage {
     height: 100vh;
@@ -118,12 +119,7 @@ h2 {
 .signuppage {
         height: 100vh;
         font-family: "Lato", sans-serif;
-        }
-    
-    .container {
-      width: 600px;
-    }
-    
+        }    
     
     .signup {
       display: -webkit-box;

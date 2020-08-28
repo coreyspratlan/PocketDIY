@@ -1,25 +1,24 @@
-import React, { useState, Component } from 'react';
+import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import '../InputCard/card.css';
 import API from "../../utils/PROJECT_API";
-import ProjectArea from "../ProjectSection/projectArea";
-import { Redirect } from "react-router-dom"
+import { Redirect } from "react-router-dom";
 
 class SquareCard extends Component {
     state = {
         name: "My Project",
-                shape: "square",
-                width: "",
-                height: "",
-                perimeter: "",
-                area: "",
-                unit: "",
-                radius: 0,
-                depth: 0,
-                routePath: ""
+        shape: "square",
+        width: "",
+        height: "",
+        perimeter: "",
+        area: "",
+        unit: "",
+        radius: 0,
+        depth: 0,
+        routePath: ""
     };
 
     changeValue = (e) => {
@@ -30,27 +29,29 @@ class SquareCard extends Component {
 
     addProject = (e) => {
         e.preventDefault();
-        console.log(this.state);
         if (this.state.name.trim().length === 0) {
             alert('Fill out a project name');
             return;
         } else {
             API.createProject(this.state)
+            .then(()=> {
+                this.setState({
+                    name: "My Project",
+                    shape: "square",
+                    width: "",
+                    height: "",
+                    perimeter: "",
+                    area: "",
+                    unit: "",
+                    radius: "",
+                    depth: "",
+                    routePath: "/projects"
+                })
+            })
                 .catch(err => {
                     alert("An error has occured")
                 })
-            this.setState({
-                name: "My Project",
-                shape: "square",
-                width: "",
-                height: "",
-                perimeter: "",
-                area: "",
-                unit: "",
-                radius: "",
-                depth: "",
-                routePath: "/members"
-            })
+            
         };
     }
 
@@ -105,7 +106,7 @@ class SquareCard extends Component {
 
     render() {
         if (this.state.routePath !== "") {
-            return <Redirect to={this.state.routePath}/>
+            return <Redirect to={this.state.routePath} />
         }
         return (
             <div className='inputareas'>
@@ -118,9 +119,6 @@ class SquareCard extends Component {
                         </Col>
                     </Row>
                     <Row>
-                        <Col>
-                            <Form.Control placeholder="height" name="height" value={this.state.height} onChange={this.changeValue} />
-                        </Col>
                         <Col>
                             <Form.Control
                                 as="select"

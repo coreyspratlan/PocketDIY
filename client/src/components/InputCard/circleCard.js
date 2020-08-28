@@ -1,13 +1,10 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import '../InputCard/card.css';
 import '../../css/main.css';
-import ProjectArea from "../ProjectSection/projectArea";
-import Figure from 'react-bootstrap/Figure';
-import drawing from '../../images/181.png';
 import API from "../../utils/PROJECT_API";
 import { Redirect } from "react-router-dom"
 
@@ -35,28 +32,30 @@ class CircleCard extends Component {
 
     addProject = (e) => {
         e.preventDefault();
-        console.log(this.state);
         if (this.state.name.trim().length === 0) {
             alert('Fill out a project name');
             return;
         } else {
             API.createProject(this.state)
+            .then(
+                this.setState({
+                    name: "My Project",
+                    shape: "square",
+                    width: "",
+                    height: "",
+                    perimeter: "",
+                    area: "",
+                    unit: "",
+                    radius: "",
+                    depth: "",
+                    diameter: "",
+                    routePath: "/projects"
+                })
+            )
                 .catch(err => {
                     alert("An error has occured")
                 })
-            this.setState({
-                name: "My Project",
-                shape: "square",
-                width: "",
-                height: "",
-                perimeter: "",
-                area: "",
-                unit: "",
-                radius: "",
-                depth: "",
-                diameter: "",
-                routePath: "/members"
-            });
+            
         };
     }
 
@@ -104,7 +103,7 @@ class CircleCard extends Component {
 
     render() {
         if (this.state.routePath !== "") {
-            return <Redirect to={this.state.routePath}/>
+            return <Redirect to={this.state.routePath} />
         }
         return (
             <div classname='inputareas'>

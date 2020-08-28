@@ -1,15 +1,15 @@
-import React,{useEffect,useState,useContext, Component} from "react";
+import React from "react";
 import {useStoreContext} from '../utils/GlobalStore';
 import {BrowserRouter as Router,Route,Switch} from "react-router-dom";
 import Projects from "./Projects.js";
 import Nav from "../components/Nav";
-import API from "../../src/utils/PROJECT_API";
 import Footer from "../components/Footer/Footer";
 import SquareCard from "../components/InputCard/squareCard";
 import CircleCard from "../components/InputCard/circleCard";
 import ShapeArea from "../components/ShapeSection/shapeArea";
 import drawing from '../images/181.png';
 import Figure from 'react-bootstrap/Figure';
+import '../css/main.css';
 
 
 
@@ -26,15 +26,16 @@ function Members() {
             <Route exact path="/members">
               <div className='memberContainer'>
                 <div className="Title" >
-                  <h2>Welcome {email}</h2>
+                  <h2 className="welcome">Welcome {email}</h2>
+                  <h2 className="subheader">Choose a shape for your project</h2>
                 </div>
                 <div className="shapeSection">
                   <ShapeArea />
                 </div>
-                <Figure>
+                <Figure className="membersPicbox">
                   <Figure.Image
-                    width={531}
-                    height={540}
+                    width={431}
+                    height={440}
                     alt="171x180"
                     src={drawing}
                   />

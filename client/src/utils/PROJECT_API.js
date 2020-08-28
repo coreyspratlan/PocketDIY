@@ -7,7 +7,7 @@ export default {
     getProjects: () => {
         return axios.get("/api/projects");
     },
-    deleteProjects: () => {
-        return axios.get("/api/projects/:id");
+    deleteProjects: (uuid) => {
+        return axios.delete("/api/projects/" + uuid);
     }
 }

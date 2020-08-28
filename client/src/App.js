@@ -13,7 +13,7 @@ function App() {
     // Our provider is setup in index.js so we can use the GlobalStore here easily.
 
     // Something we want to do at the beginning of the application is check if the user is logged in or not, if the user is, we'll
-    // dispatch an action 
+    // usedispatch an action 
     const [state, dispatch] = useStoreContext();
     useEffect(() => {
         // Try getting our user-data, if the user is logged in, we will update our GlobalStore to refelct that
@@ -26,13 +26,11 @@ function App() {
                 }
             })
         }).catch(err => {
-            // Not able to be logged in, leave us logged out
-            console.log("error", err);
             dispatch({
                 type: AUTH_SET_LOGGED_OUT
             })
         })
-    }, []);
+    },[]);
 
     const logout = () => {
         API.logout().then(() => {
@@ -58,7 +56,7 @@ function App() {
                             // If the user is Logged In
                             <>
                                 <b>Welcome {state.email}!</b> &nbsp;&nbsp;&nbsp;
-                                <Link to="/members">Members</Link> | <a onClick={() => logout() }href="#">Logout</a>
+                                <Link to="/members">Members</Link> | <a onClick={() => logout() }href="/login">Logout</a>
                             </>
                         )
                         }
@@ -88,7 +86,7 @@ function App() {
                     }
                     <Route>
                         { /*If none of the other pages match, redirect them to the main page */}
-                        <Redirect to="/" />
+                        <Redirect to="/login" />
                     </Route>
                 </Switch>
 

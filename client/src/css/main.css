@@ -1,49 +1,269 @@
+/* body {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+            flex-direction: column;
+    align-content: center;
+    -webkit-box-pack: center;
+            justify-content: center;
+    color: black;
+  } */
+
+  .appbackground {
+    background-color: #ff8473;
+    background-image: linear-gradient(to bottom right, rgb(255, 255, 255), rgb(255, 255, 255) 60%, transparent 60%);
+  }
+/*   
+  div {
+    width: 200px;
+    height: 200px;
+    background-image: linear-gradient(to bottom right, red, red 60%, transparent 60%);
+  } */
+
+
 .memberContainer {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
     grid-template-areas: "title title"
-                         "shape1 shape2"
-                         "user1 user2"
-                         "projarea projarea"
+                         "main image"
                          "footer footer"
 }
 
 .Title {
     grid-area: title;
+    margin-left: 20px;
+}
+
+.welcome {
+    display: flex;
+    justify-content: center;
+}
+
+.subheader {
+    display: flex;
+    justify-content: center;
+
+}
+
+h2 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.membersPicbox {
+    display: flex;
+    grid-area: image;
+    position: relative;
+    margin: 20px;
+    align-content: center;
+    justify-content: center;
+}
+.memberspic {
+    position: absolute;
 }
 
 
 .shapeSection {
+    grid-area: main;
     justify-self: center;
-    margin: 10px;
+    margin: 30px;
 }
 
 .squarediv {
-    grid-area: shape1;
     justify-self: end;
     margin-bottom: 50px;
     margin-top: 20px;
 }
 
 .circlediv {
-    margin:10px
+    justify-self: end;
+    margin-bottom: 50px;
+    margin-top: 20px;
 }
 
 .inputSection1 {
     justify-self: center;
-    grid-area: user1;
 }
 
 .inputSection2 {
     justify-self: center;
-    grid-area: user2;
 }
 
 .projectSection {
  border: 1px solid gray;
- grid-area: projarea;
 }
 
 .footer {
     grid-area: footer;
 }
+
+
+/* LoginPage & Sign Up Page_________________________________________________________________________*/
+
+
+
+.loginpage {
+    height: 100vh;
+    font-family: "Lato", sans-serif;
+    }
+
+.signuppage {
+        height: 100vh;
+        font-family: "Lato", sans-serif;
+        }
+    
+    .container {
+      width: 600px;
+    }
+    
+    
+    .signup {
+      display: -webkit-box;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+              flex-direction: column;
+      background: transparent;
+      max-width: 320px;
+      padding: 2rem 2rem 2rem 2rem;
+      position: relative;
+    }
+
+
+    .signup::before, .signup::after {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 100%;
+      -webkit-transition: all 0.5s ease;
+      transition: all 0.5s ease;
+    }
+
+
+
+    .signup::before {
+      z-index: -1;
+      background: transparent;
+      -webkit-trans.signup: translateX(-3.5rem) translateY(-3.75rem);
+              trans.signup: translateX(-3.5rem) translateY(-3.75rem);
+      border: 6px solid #0e39fe;
+    }
+    .signup::after {
+      background: #0ea8ec;
+      z-index: -2;
+      -webkit-trans.signup: translateX(-2rem) translateY(-2.25rem);
+              trans.signup: translateX(-2rem) translateY(-2.25rem);
+    }
+    .signup h1 {
+      text-align: center;
+      margin: 0 0 0.25rem 0;
+      padding: 0;
+      font-size: 1.5rem;
+    }
+    .signup small {
+      display: block;
+      margin: 0 auto 1rem;
+      padding: 0;
+      font-size: 14px;
+    }
+    .signup:focus-within {
+      background: #0ea8ec;
+    }
+    .signup:focus-within::before {
+      width: 0%;
+      height: 0%;
+      -webkit-trans.signup: translatex(0px) translatey(0px);
+              trans.signup: translatex(0px) translatey(0px);
+    }
+    .signup .field {
+      display: -webkit-box;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: reverse;
+              flex-flow: column-reverse;
+      margin-bottom: 1em;
+    }
+    .signup label,
+    .signup input {
+      -webkit-transition: all 0.3s ease;
+      transition: all 0.3s ease;
+      touch-action: manipulation;
+    }
+    .signup label {
+      opacity: 0;
+    }
+    .signup input {
+      padding: 10px 20px;
+      border: 4px solid white;
+      margin: 0 1.5rem;
+      background-color: transparent !important;
+      -webkit-appearance: none;
+      color: white;
+    }
+    .signup input:-webkit-autofill {
+      background-color: transparent !important;
+      -webkit-box-shadow: 0 0 0px 1000px #0ea8ec inset;
+      -webkit-text-fill-color: white !important;
+    }
+    .signup input::-webkit-input-placeholder {
+      color: white;
+    }
+    .signup input::-moz-placeholder {
+      color: white;
+    }
+    .signup input:-ms-input-placeholder {
+      color: white;
+    }
+    .signup input::-ms-input-placeholder {
+      color: white;
+    }
+    .signup input::placeholder {
+      color: white;
+    }
+    .signup input:focus {
+      color: #0e39fe;
+      font-weight: bold;
+      outline: 0;
+      border: 6px solid #0e39fe;
+    }
+    .signup input::-webkit-input-placeholder {
+      opacity: 1;
+      -webkit-transition: inherit;
+      transition: inherit;
+    }
+    .signup input:focus::-webkit-input-placeholder {
+      opacity: 0;
+    }
+    .signup button {
+      border: none;
+      padding: 0.85rem 1rem;
+      margin-top: 2rem;
+      background-color: #0e39fe;
+      color: white;
+      font-size: 0.75rem;
+      text-trans.signup: uppercase;
+      width: 65%;
+      position: absolute;
+      bottom: -20px;
+      right: 18%;
+      letter-spacing: 0.15em;
+      -webkit-transition: all 0.3s ease;
+      transition: all 0.3s ease;
+    }
+    .signup button:hover {
+      border: 6px solid #090c9b;
+    }
+    .signup p {
+      font-size: 0.75rem;
+      line-height: 1.125rem;
+      margin: 0.5rem 1.5rem 1.75rem 1.5rem;
+    }
+    .signup p.success-message {
+      font-size: 1.25rem;
+      text-align: center;
+      line-height: 2rem;
+      margin: 1.5rem auto 5rem auto;
+    }
+    

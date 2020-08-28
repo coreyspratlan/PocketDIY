@@ -1,15 +1,13 @@
-import React, { Component, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { Col, Row, Container } from "../components/Grid";
-import Jumbotron from "../components/Jumbotron";
-import { SavedProject } from "../components/ProjectSection/savedProject";
+import React, { useEffect, useState } from "react";
+import { Container } from "../components/Grid";
 import API from "../utils/PROJECT_API"
 import { ListItem } from "../components/List";
 import square from '../images/drawn-square.png';
 import circle from '../images/drawn-circle.png';
 import triangle from '../images/drawn-triangle.png';
 import Figure from 'react-bootstrap/Figure';
-// class Projects extends Component 
+import Button from 'react-bootstrap/Button';
+
 function Projects() {
 
   const [projects, setProjects] = useState([])
@@ -26,6 +24,12 @@ function Projects() {
       .catch(err => console.log(err));
   };
 
+  function removeProject(uuid) {
+    API.deleteProjects(uuid)
+      .then(res =>
+        loadProjects());
+  };
+
 
   return (
     <Container className="text-center">
@@ -33,8 +37,8 @@ function Projects() {
 
       {projects.map(project => {
         return (
-          <ListItem key={project._id}>
-            <a href={"/projects/" + project._id}>
+          <ListItem key={project.uuid}>
+            <a href={"/projects/" + project.uuid}>
             </a>
             <h2 className="text-center">{project.name}
             </h2>
@@ -59,31 +63,48 @@ function Projects() {
               />
 
             </Figure>
-            <br />
-            <div style={{ width: "200px" }}>
+            {
+              project.width !== 0 &&
               <p>
                 Width: {project.width}
               </p>
+            }
+            {
+              project.height !== 0 &&
               <p>
                 Height: {project.height}
               </p>
+            }
+            {
+              project.depth !== 0 &&
               <p>
                 Depth: {project.depth}
               </p>
+            }
+            {
+              project.radius !== 0 &&
               <p>
                 Radius: {project.radius}
-              </p >
+              </p>
+            }
+            {
+              project.area !== 0 &&
               <p>
                 Area: {project.area}
               </p>
+            }
+            {
+              project.perimeter !== 0 &&
               <p>
                 Perimeter: {project.perimeter}
               </p>
-              <p>
-                Unit: {project.unit}
-              </p>
-            </div>
-
+            }
+            <p>
+              Unit: {project.unit}
+            </p>
+            <Button onClick={() => removeProject(project.uuid)}>
+              𝘅
+        </Button>
           </ListItem>
         );
       })}
@@ -92,7 +113,6 @@ function Projects() {
   );
 
 }
-
 
 export default Projects;
 

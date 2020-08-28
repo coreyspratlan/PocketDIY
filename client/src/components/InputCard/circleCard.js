@@ -123,7 +123,8 @@ class CircleCard extends Component {
         }
         return (
             <div className='inputareas'>
-                <h5> Circle </h5>
+<<<<<<< Updated upstream
+        <h5> Input what measurements you know below and PocketDIY will return you measurements </h5>
                 {this.state.submit === "" &&
                     <Form className="cardInputs">
                         <Row>
@@ -160,9 +161,13 @@ class CircleCard extends Component {
                 }
                 {
                     this.state.submit === "Submit" &&
+=======
+
+>>>>>>> Stashed changes
 
                     <div className="projectSection">
                         <Col>
+<<<<<<< Updated upstream
                             <Form.Control placeholder="Project Name" name="name" value={this.state.name} onChange={this.changeValue} />
                         </Col>
                         <p>Shape: {this.state.shape}</p>
@@ -175,6 +180,47 @@ class CircleCard extends Component {
                         
                     </div>
                 }
+=======
+                            <Form.Control placeholder="radius" className="userinputbox"  name="radius" value={this.state.radius} onChange={this.changeValue} />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <Form.Control placeholder="diameter" className="userinputbox" name="diameter" value={this.state.diameter} onChange={this.changeValue} />
+                        </Col>
+                        <Col>
+                            <Form.Control
+                                as="select"
+                                className="unitSelect"
+                                id="inlineFormCustomSelect"
+                                name="unit"
+                                custom
+                                onChange={this.changeValue}
+                                value={this.state.unit}
+                            >
+                                <option value="" >Choose your unit</option>
+                                <option value="in">Inches</option>
+                                <option value="cm">Centimeters</option>
+                            </Form.Control>
+                        </Col>
+                    </Row>
+
+                    <Col xs="auto" className="my-1">
+                        <Button type="submit" onClick={this.handleFormSubmit} >Submit</Button>
+                    </Col>
+                </Form>
+                <div className="projectSection">
+                    <Col>
+                        <Form.Control placeholder="Project Name" className="userinputbox" name="name" value={this.state.name} onChange={this.changeValue} />
+                    </Col>
+                    <p>Shape: {this.state.shape}</p>
+                    <p>Radius: {this.state.radius} {this.state.unit}</p>
+                    <p>Diameter: {this.state.diameter} {this.state.unit}</p>
+                    <p>Perimeter: {this.state.perimeter} {this.state.unit}</p>
+                    <p>Area: {this.state.area} {this.state.unit}^2</p>
+                    <Button onClick={this.addProject}>Save Project</Button>
+                </div>
+>>>>>>> Stashed changes
             </div>
         )
     }

@@ -7,6 +7,7 @@ import API from "../utils/PROJECT_API"
 import { ListItem } from "../components/List";
 import square from '../images/drawn-square.png';
 import circle from '../images/drawn-circle.png';
+import triangle from '../images/drawn-triangle.png';
 import Figure from 'react-bootstrap/Figure';
 // class Projects extends Component 
 function Projects() {
@@ -27,56 +28,62 @@ function Projects() {
 
 
   return (
-    <Container fluid>
-      <h1>Projects</h1>
+    <Container className="text-center">
+      <h1 className="text-center"><b>Projects</b></h1>
 
       {projects.map(project => {
         return (
           <ListItem key={project._id}>
             <a href={"/projects/" + project._id}>
             </a>
-            <h2>Created by: {project.name}
+            <h2 className="text-center">{project.name}
             </h2>
-            <p>
-              Shape:
-            </p>
-            <Figure>
-              
-                    <Figure.Image
-                    
-                        width={201}
-                        height={210}
-                        alt="171x180"
-                        src={(() => {
-                          switch (project.shape) {
-                            case "circle":   return circle;
-                            case "square": return square;
-                            default:      return "";
-                          }
-                        })()}
-                    />
+
+            <Figure className="text-center">
+
+              <Figure.Image
+
+                width={201}
+                height={210}
+                alt="171x180"
+                src={(() => {
+                  switch (project.shape) {
+                    case "circle": return circle;
+                    case "square": return square;
+                    case "triangle": return triangle;
+                    default: return "";
+                  }
+                })()}
+
+
+              />
+
             </Figure>
-            <p>
-              Width: {project.width}
-            </p>
-            <p>
-              Height: {project.height}
-            </p>
-            <p>
-              Depth: {project.depth}
-            </p>
-            <p>
-              Radius: {project.radius}
-            </p>
-            <p>
-              Area: {project.area}
-            </p>
-            <p>
-              Perimeter: {project.perimeter}
-            </p>
-            <p>
-              Unit: {project.unit}
-            </p>
+            <br />
+            <div style={{ width: "200px" }}>
+              <p>
+                Width: {project.width}
+              </p>
+              <p>
+                Height: {project.height}
+              </p>
+              <p>
+                Depth: {project.depth}
+              </p>
+              <p>
+                Radius: {project.radius}
+              </p >
+              <p>
+                Area: {project.area}
+              </p>
+              <p>
+                Perimeter: {project.perimeter}
+              </p>
+              <p>
+                Unit: {project.unit}
+              </p>
+            </div>
+
           </ListItem>
         );
       })}
@@ -88,3 +95,9 @@ function Projects() {
 
 
 export default Projects;
+
+
+
+
+
+

@@ -39,7 +39,7 @@ function Projects() {
         <h1 className="projects-label">Projects</h1>
       </Row>
 
-      {projects.map(project => {
+      {projects.slice(0).reverse().map(project => {
         return (
           <Row style={{ height: 220 }} className="project-container" key={project.uuid}>
             <a href={"/projects/" + project.uuid}>
@@ -54,9 +54,7 @@ function Projects() {
                     switch (project.shape) {
                       case "circle": return circle;
                       case "square": return square;
-          case "triangle": return triangle;
-	
-
+                      case "triangle": return triangle;
                       default: return "";
                     }
                   })()}

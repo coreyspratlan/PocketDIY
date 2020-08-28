@@ -2,13 +2,14 @@ import React from 'react'
 import Figure from 'react-bootstrap/Figure';
 import square from '../../images/drawn-square.png';
 import circle from '../../images/drawn-circle.png';
-import {Link} from "react-router-dom";
+import triangle from '../../images/drawn-triangle.png';
+import { Link } from "react-router-dom";
 
 function ShapeArea() {
     return (
         <div>
             <div className='squarediv'>
-            <Figure>
+                <Figure>
                     <Figure.Image
                         width={201}
                         height={210}
@@ -16,11 +17,11 @@ function ShapeArea() {
                         src={square}
                     />
                     <Link to="/square">Square</Link>
-            </Figure>
+                </Figure>
             </div>
 
             <div className='circlediv'>
-            <Figure>
+                <Figure>
                     <Figure.Image
                         width={201}
                         height={210}
@@ -28,7 +29,19 @@ function ShapeArea() {
                         src={circle}
                     />
                     <Link to="/circle">Circle</Link>
-            </Figure>
+                </Figure>
+
+                <div className='trianglediv'>
+                    <Figure>
+                        <Figure.Image
+                            width={201}
+                            height={210}
+                            alt="171x180"
+                            src={triangle}
+                        />
+                        <Link to="/triangle">Triangle</Link>
+                    </Figure>
+                </div>
             </div>
         </div>
     )

@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from "react";
-import { Container } from "../components/Grid";
+import React,{useEffect,useState} from "react";
+import {Container} from "../components/Grid";
 import API from "../utils/PROJECT_API"
-import { ListItem } from "../components/List";
+import {ListItem} from "../components/List";
 import square from '../images/drawn-square.png';
 import circle from '../images/drawn-circle.png';
 import triangle from '../images/drawn-triangle.png';
 import Figure from 'react-bootstrap/Figure';
 import Button from 'react-bootstrap/Button';
 import '../css/projects.css';
-import { Col, Row, Card, ListGroup, ListGroupItem } from "react-bootstrap";
-
+import {Col,Row,Card,ListGroup,ListGroupItem} from "react-bootstrap";
+import '../css/main.css';
 
 function Projects() {
 
-  const [projects, setProjects] = useState([])
+  const [projects,setProjects]=useState([])
 
   useEffect(() => {
     loadProjects()
-  }, [])
+  },[])
 
   function loadProjects() {
     API.getProjects()
@@ -34,15 +34,15 @@ function Projects() {
   };
 
   return (
-    <Container fluid={false} style={{ minHeight: "100vh" }}>
+    <Container fluid={false} style={{minHeight: "100vh"}}>
       <Row className="light">
         <h1 className="projects-label">Projects</h1>
       </Row>
 
       {projects.slice(0).reverse().map(project => {
         return (
-          <Row style={{ height: 220 }} className="project-container" key={project.uuid}>
-            <a href={"/projects/" + project.uuid}>
+          <Row style={{height: 220}} className="project-container" key={project.uuid}>
+            <a href={"/projects/"+project.uuid}>
             </a>
             <Col md={3} className="project-shape">
               <Figure>
@@ -51,7 +51,7 @@ function Projects() {
                   height={210}
                   alt="171x180"
                   src={(() => {
-                    switch (project.shape) {
+                    switch(project.shape) {
                       case "circle": return circle;
                       case "square": return square;
                       case "triangle": return triangle;
@@ -66,43 +66,43 @@ function Projects() {
                 <h3><span className="project-name-label">Project Name:</span> <span className="project-name">{project.name}</span>
                 </h3>
                 {
-                  project.width !== 0 &&
+                  project.width!==0&&
                   <p>
                     <span className="project-data-label">Width:</span> <span className="project-data">{project.width}
-                  </span></p>
+                    </span></p>
                 }
                 {
-                  project.height !== 0 &&
+                  project.height!==0&&
                   <p>
                     <span className="project-data-label">Height:</span> <span className="project-data">{project.height}
-                  </span></p>
+                    </span></p>
                 }
                 {
-                  project.depth !== 0 &&
+                  project.depth!==0&&
                   <p>
                     <span className="project-data-label">Depth:</span> <span className="project-data">{project.depth}
-                  </span></p>
+                    </span></p>
                 }
                 {
-                  project.radius !== 0 &&
+                  project.radius!==0&&
                   <p>
                     <span className="project-data-label">Radius:</span> <span className="project-data">{project.radius}
-                  </span></p>
+                    </span></p>
                 }
                 {
-                  project.area !== 0 &&
+                  project.area!==0&&
                   <p>
                     <span className="project-data-label">Area:</span> <span className="project-data">{project.area}
-                  </span></p>
+                    </span></p>
                 }
                 {
-                  project.perimeter !== 0 &&
+                  project.perimeter!==0&&
                   <p>
                     <span className="project-data-label">Perimeter:</span> <span className="project-data">{project.perimeter}
-                  </span></p>
+                    </span></p>
                 }
                 <p>
-                <span className="project-data-label">Unit:</span> {project.unit}
+                  <span className="project-data-label">Unit:</span> {project.unit}
                 </p>
               </ListItem>
               <div className="close-button">
@@ -114,7 +114,7 @@ function Projects() {
           </Row>
         );
       })}
-      <Row>
+        <Row>
       </Row>
     </Container>
   );

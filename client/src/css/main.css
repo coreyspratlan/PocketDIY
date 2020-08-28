@@ -1,28 +1,17 @@
-/* body {
-    display: -webkit-box;
-    display: flex;
-    -webkit-box-align: center;
-            align-items: center;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-            flex-direction: column;
-    align-content: center;
-    -webkit-box-pack: center;
-            justify-content: center;
-    color: black;
-  } */
-
-  .appbackground {
+/* All pages_____________________________________________________________________________*/
+.appbackground {
     background-color: #ff8473;
     background-image: linear-gradient(to bottom right, rgb(255, 255, 255), rgb(255, 255, 255) 60%, transparent 60%);
+    z-index: -4;
   }
-/*   
-  div {
-    width: 200px;
-    height: 200px;
-    background-image: linear-gradient(to bottom right, red, red 60%, transparent 60%);
-  } */
 
+Form {
+    padding: 50px;
+    margin: 10px;
+}
+
+
+/* Main/Members Page______________________________________________________________________*/
 
 .memberContainer {
     display: grid;
@@ -45,11 +34,20 @@
 .subheader {
     display: flex;
     justify-content: center;
-
 }
 
-h2 {
+h1, h2 {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+h3 {
+    font-size: small;
+}
+
+h5 {
+    padding: 20px;
+    margin: 20px;
+    font-size: medium;
 }
 
 .membersPicbox {
@@ -60,9 +58,18 @@ h2 {
     align-content: center;
     justify-content: center;
 }
+
 .memberspic {
     position: absolute;
 }
+
+.my-1 {
+    position: relative;
+    left: -25px;
+    margin: 10px
+}
+
+/* Shapes Section_______________________________________________________________________________*/
 
 
 .shapeSection {
@@ -91,15 +98,52 @@ h2 {
 
 .inputSection1 {
     justify-self: center;
+
+/* Project Input Section_________________________________________________________________________*/
+
+.inputareas {
+    min-height: 100vh;
 }
 
-.inputSection2 {
-    justify-self: center;
+.userinputbox {
+    border-color: white white black white;
+    background-color: transparent;
+    margin-bottom: 20px;
+    font-size: large;
+    box-shadow: none;
+    border-radius: 0;
 }
+
+
+.cardInputs {
+    position: relative;
+    left: -5px;
+    max-width: 50%;
+    margin: 50px;
+}
+
 
 .projectSection {
- border: 1px solid gray;
+    max-width: 50%;
+    margin: 50px;
 }
+
+.projectSection p{
+    font-size: x-large;
+    margin: 10px;
+}
+
+
+
+/* Projects Page__________________________________________________________________________________*/
+
+#projectspage {
+ height: 100vh;
+}
+
+
+
+/* Footer_________________________________________________________________________________________*/
 
 .footer {
     /* grid-area: footer; */
@@ -109,7 +153,7 @@ h2 {
 }
 
 
-/* LoginPage & Sign Up Page_________________________________________________________________________*/
+/* LoginPage & Sign Up Page_______________________________________________________________________*/
 
 .loginpage {
     height: 100vh;
@@ -134,30 +178,6 @@ h2 {
     }
 
 
-    .signup::before, .signup::after {
-      position: absolute;
-      content: "";
-      width: 100%;
-      height: 100%;
-      -webkit-transition: all 0.5s ease;
-      transition: all 0.5s ease;
-    }
-
-
-
-    .signup::before {
-      z-index: -1;
-      background: transparent;
-      -webkit-trans.signup: translateX(-3.5rem) translateY(-3.75rem);
-              trans.signup: translateX(-3.5rem) translateY(-3.75rem);
-      border: 6px solid #0e39fe;
-    }
-    .signup::after {
-      background: #0ea8ec;
-      z-index: -2;
-      -webkit-trans.signup: translateX(-2rem) translateY(-2.25rem);
-              trans.signup: translateX(-2rem) translateY(-2.25rem);
-    }
     .signup h1 {
       text-align: center;
       margin: 0 0 0.25rem 0;
@@ -170,15 +190,14 @@ h2 {
       padding: 0;
       font-size: 14px;
     }
-    .signup:focus-within {
-      background: #0ea8ec;
-    }
+
     .signup:focus-within::before {
       width: 0%;
       height: 0%;
       -webkit-trans.signup: translatex(0px) translatey(0px);
               trans.signup: translatex(0px) translatey(0px);
     }
+    
     .signup .field {
       display: -webkit-box;
       display: flex;
@@ -198,8 +217,8 @@ h2 {
     }
     .signup input {
       padding: 10px 20px;
-      border: 4px solid white;
       margin: 0 1.5rem;
+      border: 1px solid lightcoral;
       background-color: transparent !important;
       -webkit-appearance: none;
       color: white;
@@ -246,7 +265,7 @@ h2 {
       color: white;
       font-size: 0.75rem;
       text-trans.signup: uppercase;
-      width: 65%;
+      width: 55%;
       position: absolute;
       bottom: -20px;
       right: 18%;
@@ -256,16 +275,5 @@ h2 {
     }
     .signup button:hover {
       border: 6px solid #090c9b;
-    }
-    .signup p {
-      font-size: 0.75rem;
-      line-height: 1.125rem;
-      margin: 0.5rem 1.5rem 1.75rem 1.5rem;
-    }
-    .signup p.success-message {
-      font-size: 1.25rem;
-      text-align: center;
-      line-height: 2rem;
-      margin: 1.5rem auto 5rem auto;
     }
     

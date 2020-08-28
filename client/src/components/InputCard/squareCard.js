@@ -28,6 +28,23 @@ class SquareCard extends Component {
         this.setState({ [name]: value });
     }
 
+    resetPage = (e) => {
+        e.preventDefault();
+        this.setState({
+            name: "My Project",
+            shape: "square",
+            width: "",
+            height: "",
+            perimeter: "",
+            area: "",
+            unit: "",
+            radius: "",
+            depth: "",
+            diameter: "",
+            submit: ""
+        })
+    }
+
     addProject = (e) => {
         e.preventDefault();
         if (this.state.name.trim().length === 0) {
@@ -67,7 +84,8 @@ class SquareCard extends Component {
                 width: "",
                 height: "",
                 perimeter: "",
-                area: ""
+                area: "",
+                submit: ""
             });
             return;
         } else if (width.trim().length !== 0 && height.trim().length !== 0) {
@@ -77,7 +95,8 @@ class SquareCard extends Component {
                 width: "",
                 height: "",
                 perimeter: "",
-                area: ""
+                area: "",
+                submit: ""
             });
             return;
         } else if (unit === "") {
@@ -87,7 +106,8 @@ class SquareCard extends Component {
                 width: "",
                 height: "",
                 perimeter: "",
-                area: ""
+                area: "",
+                submit: ""
             });
             return;
         } else if (width.trim().length === 0) {
@@ -116,35 +136,38 @@ class SquareCard extends Component {
         return (
             <div className='inputareas'>
                 <h5> Square </h5>
-                <Form className="cardInputs">
 
-                    <Row>
-                        <Col>
-                            <Form.Control placeholder="width" name="width" value={this.state.width} onChange={this.changeValue} />
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <Form.Control
-                                as="select"
-                                className="unitSelect"
-                                id="inlineFormCustomSelect"
-                                name="unit"
-                                custom
-                                onChange={this.changeValue}
-                                value={this.state.unit}
-                            >
-                                <option value="" >Choose...</option>
-                                <option value="in">Inches</option>
-                                <option value="cm">Centimeters</option>
-                            </Form.Control>
-                        </Col>
-                    </Row>
+                {this.state.submit === "" &&
+                    <Form className="cardInputs">
 
-                    <Col xs="auto" className="my-1">
-                        <Button type="submit" onClick={this.handleFormSubmit} >Submit</Button>
-                    </Col>
-                </Form>
+                        <Row>
+                            <Col>
+                                <Form.Control placeholder="width" name="width" value={this.state.width} onChange={this.changeValue} />
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <Form.Control
+                                    as="select"
+                                    className="unitSelect"
+                                    id="inlineFormCustomSelect"
+                                    name="unit"
+                                    custom
+                                    onChange={this.changeValue}
+                                    value={this.state.unit}
+                                >
+                                    <option value="" >Choose...</option>
+                                    <option value="in">Inches</option>
+                                    <option value="cm">Centimeters</option>
+                                </Form.Control>
+                            </Col>
+                        </Row>
+
+                        <Col xs="auto" className="my-1">
+                            <Button type="submit" onClick={this.handleFormSubmit} >Submit</Button>
+                        </Col>
+                    </Form>
+                }
                 {
 
                     this.state.submit === "Submit" &&
@@ -159,6 +182,7 @@ class SquareCard extends Component {
                         <p>Perimeter: {this.state.perimeter} {this.state.unit}</p>
                         <p>Area: {this.state.area} {this.state.unit}^2</p>
                         <Button onClick={this.addProject}>Save Project</Button>
+                        <Button onClick={this.resetPage}>Reset Page</Button>
                     </div>
                 }
             </div>

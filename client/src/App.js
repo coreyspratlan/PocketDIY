@@ -43,7 +43,7 @@ function App() {
     return (
 
         <Router>
-            <div>
+            <div className="appbackground">
                 {/* Componetize this into Nav */}
                 <div>
                         {!state.userLoggedIn ? (

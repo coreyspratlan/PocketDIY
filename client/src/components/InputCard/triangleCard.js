@@ -28,6 +28,23 @@ class TriangleCard extends Component {
         this.setState({ [name]: value });
     }
 
+    resetPage = (e) => {
+        e.preventDefault();
+        this.setState({
+            name: "My Project",
+            shape: "triangle",
+            width: "",
+            height: "",
+            perimeter: "",
+            area: "",
+            unit: "",
+            radius: "",
+            depth: "",
+            diameter: "",
+            submit: ""
+        })
+    }
+
     addProject = (e) => {
         e.preventDefault();
         if (this.state.name.trim().length === 0) {
@@ -67,7 +84,8 @@ class TriangleCard extends Component {
                 width: "",
                 height: "",
                 perimeter: "",
-                area: ""
+                area: "",
+                submit: ""
             });
             return;
         } else if (unit === "") {
@@ -77,16 +95,16 @@ class TriangleCard extends Component {
                 width: "",
                 height: "",
                 perimeter: "",
-                area: ""
+                area: "",
+                submit: ""
             });
             return;
         } else {
-            this.setState({ width: height })
-            this.setState({ perimeter: width * 3 })
-            this.setState({ area: (height * width) / 2 })
-            let newTriangle = { name, width, height, perimeter, area, unit }
-            this.setState({ Triangle: newTriangle })
-            this.setState({ submit: "Submit" })
+            this.setState({ perimeter: Math.sqrt((width * width) + (4 * height * height)) + Math.sqrt(width * width)});
+            this.setState({ area: (height * width) / 2 });
+            let newTriangle = { name, width, height, perimeter, area, unit };
+            this.setState({ Triangle: newTriangle });
+            this.setState({ submit: "Submit" });
         }
     };
 
@@ -96,7 +114,8 @@ class TriangleCard extends Component {
         }
         return (
             <div className='inputareas'>
-                <h5> Triangle </h5>
+                <h5> Isosceles Triangle </h5>
+                {this.state.submit === "" &&
                 <Form className="cardInputs">
 
                     <Row>
@@ -129,6 +148,7 @@ class TriangleCard extends Component {
                         <Button type="submit" onClick={this.handleFormSubmit} >Submit</Button>
                     </Col>
                 </Form>
+                }
                 {
                     this.state.submit === "Submit" &&
 
@@ -142,6 +162,7 @@ class TriangleCard extends Component {
                         <p>Perimeter: {this.state.perimeter} {this.state.unit}</p>
                         <p>Area: {this.state.area} {this.state.unit}^2</p>
                         <Button onClick={this.addProject}>Save Project</Button>
+                        <Button onClick={this.resetPage}>Reset Page</Button>
                     </div>
                 }
             </div>

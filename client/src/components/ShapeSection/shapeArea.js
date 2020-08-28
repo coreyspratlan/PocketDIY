@@ -39,7 +39,7 @@ function ShapeArea() {
                             alt="171x180"
                             src={triangle}
                         />
-                        <Link to="/triangle">Triangle</Link>
+                        <Link to="/triangle">Isosceles Triangle</Link>
                     </Figure>
                 </div>
             </div>

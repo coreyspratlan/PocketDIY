@@ -124,6 +124,7 @@ class CircleCard extends Component {
         return (
             <div className='inputareas'>
 <<<<<<< Updated upstream
++++
         <h5> Input what measurements you know below and PocketDIY will return you measurements </h5>
                 {this.state.submit === "" &&
                     <Form className="cardInputs">
@@ -168,6 +169,7 @@ class CircleCard extends Component {
                     <div className="projectSection">
                         <Col>
 <<<<<<< Updated upstream
++++
                             <Form.Control placeholder="Project Name" name="name" value={this.state.name} onChange={this.changeValue} />
                         </Col>
                         <p>Shape: {this.state.shape}</p>
@@ -181,6 +183,7 @@ class CircleCard extends Component {
                     </div>
                 }
 =======
++++
                             <Form.Control placeholder="radius" className="userinputbox"  name="radius" value={this.state.radius} onChange={this.changeValue} />
                         </Col>
                     </Row>
@@ -221,6 +224,7 @@ class CircleCard extends Component {
                     <Button onClick={this.addProject}>Save Project</Button>
                 </div>
 >>>>>>> Stashed changes
++++
             </div>
         )
     }

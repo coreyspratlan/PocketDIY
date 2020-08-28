@@ -38,6 +38,8 @@ const TestArea = () => {
             >
               <option value="square">Square</option>
               <option value="circle">Circle</option>
+              <option value="circle">Triangle</option>
+
             </select>
           </div>
           <div className="form-group">

@@ -120,12 +120,12 @@ class TriangleCard extends Component {
 
                     <Row>
                         <Col>
-                            <Form.Control placeholder="width" name="width" value={this.state.width} onChange={this.changeValue} />
+                            <Form.Control placeholder="width" className="userinputbox" name="width" value={this.state.width} onChange={this.changeValue} />
                         </Col>
                     </Row>
                     <Row>
                         <Col>
-                            <Form.Control placeholder="height" name="height" value={this.state.height} onChange={this.changeValue} />
+                            <Form.Control placeholder="height" className="userinputbox" name="height" value={this.state.height} onChange={this.changeValue} />
                         </Col>
                         <Col>
                             <Form.Control
@@ -162,6 +162,8 @@ class TriangleCard extends Component {
                         <p>Perimeter: {this.state.perimeter} {this.state.unit}</p>
                         <p>Area: {this.state.area} {this.state.unit}^2</p>
                         <Button onClick={this.addProject}>Save Project</Button>
+                        <br></br>
+                        <br></br>
                         <Button onClick={this.resetPage}>Reset Page</Button>
                     </div>
                 }

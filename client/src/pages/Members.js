@@ -21,27 +21,27 @@ function Members() {
 
   return (
     <Router>
-      <div>
-        <Nav />
-        <Switch>
-          <Route exact path="/members">
-            <div className='memberContainer'>
-              <div className="Title" >
-                <h2 className="welcome">Welcome {email}</h2>
-                <h2 className="subheader">Choose a shape for your project</h2>
+        <div>
+          <Nav />
+          <Switch>
+            <Route exact path="/members">
+              <div className='memberContainer'>
+                <div className="Title" >
+                  <h3 className="welcome">Welcome {email}</h3>
+                  <h2 className="subheader">Choose a shape for your project</h2>
+                </div>
+                <div className="shapeSection">
+                  <ShapeArea />
+                </div>
+                <Figure className="membersPicbox">
+                  <Figure.Image
+                    width={431}
+                    height={440}
+                    alt="171x180"
+                    src={drawing}
+                  />
+                </Figure>
               </div>
-              <div className="shapeSection">
-                <ShapeArea />
-              </div>
-              <Figure className="membersPicbox">
-                <Figure.Image
-                  width={431}
-                  height={440}
-                  alt="171x180"
-                  src={drawing}
-                />
-              </Figure>
-            </div>
 
           </Route>
           <Route exact path="/projects">
@@ -60,7 +60,6 @@ function Members() {
           </Route>
         </Switch>
       </div>
-      <Footer />
     </Router>
   )
 }

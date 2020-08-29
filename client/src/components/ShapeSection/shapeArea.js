@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 function ShapeArea() {
     return (
-        <div>
+        <div className="shapeDiv">
             <div className='squarediv'>
                 <Figure>
                     <Figure.Image
@@ -16,7 +16,7 @@ function ShapeArea() {
                         alt="171x180"
                         src={square}
                     />
-                    <Link to="/square">Square</Link>
+                    <Link className="squarebutton" to="/square">Square</Link>
                 </Figure>
             </div>
 
@@ -28,7 +28,7 @@ function ShapeArea() {
                         alt="171x180"
                         src={circle}
                     />
-                    <Link to="/circle">Circle</Link>
+                    <Link className="circlebutton" to="/circle">Circle</Link>
                 </Figure>
 
                 <div className='trianglediv'>
@@ -39,7 +39,7 @@ function ShapeArea() {
                             alt="171x180"
                             src={triangle}
                         />
-                        <Link to="/triangle">Isosceles Triangle</Link>
+                        <Link className="trianglebutton" to="/triangle">Isosceles Triangle</Link>
                     </Figure>
                 </div>
             </div>

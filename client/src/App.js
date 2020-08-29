@@ -6,6 +6,7 @@ import Signup from "./pages/Signup";
 import Members from "./pages/Members";
 import { useStoreContext } from './utils/GlobalStore';
 import API from './utils/API';
+import Footer from './components/Footer/Footer'
 import { AUTH_SET_LOGGED_IN, AUTH_SET_LOGGED_OUT } from "./utils/actions";
 
 
@@ -89,7 +90,7 @@ function App() {
                         <Redirect to="/login" />
                     </Route>
                 </Switch>
-
+                <Footer />
             </div>
         </Router>
     );

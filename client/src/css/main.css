@@ -78,6 +78,17 @@ h5 {
     margin: 30px;
 }
 
+.circlebutton,
+.squarebutton,
+.trianglebutton {
+  font-size: medium;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  padding: 10px;
+  margin: 10px;
+  background-color: rgb(213, 242, 255);
+  border-radius: 8px;
+}
+
 .squarediv {
     justify-self: end;
     margin-bottom: 50px;
@@ -98,6 +109,7 @@ h5 {
 
 .inputSection1 {
     justify-self: center;
+}
 
 /* Project Input Section_________________________________________________________________________*/
 
@@ -149,7 +161,10 @@ h5 {
     /* grid-area: footer; */
     position: absolute;
     bottom: 0px;
-    width: 100%; 
+    width: 100%;
+    height: 3vh;
+    background-color: whitesmoke;
+    font-family: "Lato", sans-serif;
 }
 
 

@@ -31,7 +31,8 @@ class CircleCard extends Component {
         this.setState({[name]: value});
     }
 
-    resetPage=(e) => {
+
+    addProject = (e) => {
         e.preventDefault();
         this.setState({
             name: "My Project",
@@ -90,7 +91,8 @@ class CircleCard extends Component {
                 submit: ""
             });
             return;
-        } else if(unit==="") {
+
+        } else if (unit === "") {
             alert('Please select a unit');
             this.setState({
                 name: "",
@@ -99,13 +101,13 @@ class CircleCard extends Component {
                 submit: ""
             });
             return;
-        } else if(diameter.trim().length!==0) {
-            this.setState({radius: diameter/2});
-            this.setState({perimeter: (diameter/2)*6.28318});
-            this.setState({area: (diameter/2)*(diameter/2)*3.14159});
-            let newCircle={radius,diameter,perimeter,area,unit};
-            this.setState({Circle: newCircle});
-            this.setState({submit: "Submit"})
+        } else if (diameter.trim().length !== 0) {
+            this.setState({ radius: diameter / 2 });
+            this.setState({ perimeter: (diameter / 2) * 6.28318 });
+            this.setState({ area: (diameter / 2) * (diameter / 2) * 3.14159 });
+            let newCircle = { radius, diameter, perimeter, area, unit };
+            this.setState({ Circle: newCircle });
+            this.setState({ submit: "Submit" })
         } else {
             this.setState({diameter: radius*2});
             this.setState({perimeter: radius*6.28318});
@@ -123,18 +125,18 @@ class CircleCard extends Component {
         }
         return (
             <div className='inputareas'>
-                <h5> Input what measurements you know below and PocketDIY will return you measurements </h5>
-                {this.state.submit===""&&
+                <h5> Circle </h5>
+                {this.state.submit === "" &&
                     <Form className="cardInputs">
                         <Row>
-                            {this.state.diameter===""&&
+                            {this.state.diameter === "" &&
                                 <Col>
-                                    <Form.Control placeholder="radius" className="userinputbox" name="radius" value={this.state.radius} onChange={this.changeValue} />
+                                    <Form.Control placeholder="radius" name="radius" value={this.state.radius} onChange={this.changeValue} />
                                 </Col>
                             }
-                            {this.state.radius===""&&
+                            {this.state.radius === "" &&
                                 <Col>
-                                    <Form.Control placeholder="diameter" className="userinputbox" name="diameter" value={this.state.diameter} onChange={this.changeValue} />
+                                    <Form.Control placeholder="diameter" name="diameter" value={this.state.diameter} onChange={this.changeValue} />
                                 </Col>
                             }
                             <Col>
@@ -174,6 +176,7 @@ class CircleCard extends Component {
                     <br></br>
                     <br></br>
                     <Button onClick={this.resetPage}>Reset Page</Button>
+
                         
                     </div>
                 }

@@ -64,10 +64,11 @@ function App() {
                 </div>
                 <Switch>
                     {
-                        
+                    
                         !state.userLoggedIn ? (
                             // These routes are only avaialable to LOGGED OUT users
                             <>
+                                <Route exact path="/" component={Login} />
                                 <Route exact path="/login" component={Login} />
                                 <Route exact path="/signup" component={Signup} />
                             </>

@@ -28,7 +28,24 @@ class SquareCard extends Component {
         this.setState({[name]: value});
     }
 
-    resetPage=(e) => {
+    resetPage = (e) => {
+        e.preventDefault();
+        this.setState({
+            name: "My Project",
+            shape: "square",
+            width: "",
+            height: "",
+            perimeter: "",
+            area: "",
+            unit: "",
+            radius: "",
+            depth: "",
+            diameter: "",
+            submit: ""
+        })
+    }
+
+    addProject = (e) => {
         e.preventDefault();
         this.setState({
             name: "My Project",
@@ -135,14 +152,13 @@ class SquareCard extends Component {
         }
         return (
             <div className='inputareas'>
-                <h5> Input what measurements you know below and PocketDIY will return you measurements </h5>
-
-                {this.state.submit===""&&
+                <h5> Square </h5>
+                {this.state.submit === "" &&
                     <Form className="cardInputs">
 
                         <Row>
                             <Col>
-                                <Form.Control placeholder="width" className="userinputbox" name="width" value={this.state.width} onChange={this.changeValue} />
+                                <Form.Control placeholder="width" name="width" value={this.state.width} onChange={this.changeValue} />
                             </Col>
                         </Row>
                         <Row>
@@ -163,6 +179,12 @@ class SquareCard extends Component {
                             </Col>
                         </Row>
 
+                        <Col xs="auto" className="my-1">
+                            <Button type="submit" onClick={this.handleFormSubmit} >Submit</Button>
+                        </Col>
+                    </Form>
+                }
+                {
                         <Col xs="auto" className="my-1">
                             <Button type="submit" onClick={this.handleFormSubmit} >Submit</Button>
                         </Col>

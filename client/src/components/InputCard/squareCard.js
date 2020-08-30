@@ -16,8 +16,6 @@ class SquareCard extends Component {
         perimeter: "",
         area: "",
         unit: "",
-        radius: 0,
-        depth: 0,
         routePath: "",
         submit: ""
     };
@@ -38,9 +36,6 @@ class SquareCard extends Component {
             perimeter: "",
             area: "",
             unit: "",
-            radius: "",
-            depth: "",
-            diameter: "",
             submit: ""
         })
     }
@@ -78,8 +73,6 @@ class SquareCard extends Component {
                         perimeter: "",
                         area: "",
                         unit: "",
-                        radius: "",
-                        depth: "",
                         routePath: "/projects",
                         submit: ""
                     })
@@ -196,6 +189,20 @@ class SquareCard extends Component {
                         <p>Height: {this.state.height} {this.state.unit}</p>
                         <p>Perimeter: {this.state.perimeter} {this.state.unit}</p>
                         <p>Area: {this.state.area} {this.state.unit}^2</p>
+                        {this.state.unit === "in" &&
+                            <div>
+                                <p>Paint required:</p>
+                                <p>{(this.state.area * 0.00694) / 350} gallons</p>
+                                <p>{(this.state.area * 0.00694) / 100} quarts</p>
+                            </div>
+                        }
+                        {this.state.unit === "cm" &&
+                            <div>
+                                <p>Paint required:</p>
+                                <p>{(this.state.area * 0.3937 * 0.00694) / 350} gallons</p>
+                                <p>{(this.state.area* 0.3937 * 0.00694) / 100} quarts</p>
+                            </div>
+                        }
                         <Button onClick={this.addProject}>Save Project</Button>
                         <br></br>
                         <br></br>

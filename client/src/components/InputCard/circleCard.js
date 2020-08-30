@@ -13,13 +13,10 @@ class CircleCard extends Component {
     state={
         name: "My Project",
         shape: "circle",
-        width: 0,
-        height: 0,
         perimeter: "",
         area: "",
         unit: "",
         radius: "",
-        depth: 0,
         diameter: "",
         routePath: "",
         submit: ""
@@ -37,13 +34,10 @@ class CircleCard extends Component {
         this.setState({
             name: "My Project",
             shape: "circle",
-            width: "",
-            height: "",
             perimeter: "",
             area: "",
             unit: "",
             radius: "",
-            depth: "",
             diameter: "",
             submit: ""
         })
@@ -60,13 +54,10 @@ class CircleCard extends Component {
                     this.setState({
                         name: "My Project",
                         shape: "circle",
-                        width: "",
-                        height: "",
                         perimeter: "",
                         area: "",
                         unit: "",
                         radius: "",
-                        depth: "",
                         diameter: "",
                         routePath: "/projects",
                         submit: ""
@@ -167,17 +158,27 @@ class CircleCard extends Component {
                         <Col>
                             <Form.Control placeholder="Project Name" className="userinputbox" name="name" value={this.state.name} onChange={this.changeValue} />
                         </Col>
-                    <p>Shape: {this.state.shape}</p>
-                    <p>Radius: {this.state.radius} {this.state.unit}</p>
-                    <p>Diameter: {this.state.diameter} {this.state.unit}</p>
-                    <p>Perimeter: {this.state.perimeter} {this.state.unit}</p>
-                    <p>Area: {this.state.area} {this.state.unit}^2</p>
-                    <Button onClick={this.addProject}>Save Project</Button>
-                    <br></br>
-                    <br></br>
-                    <Button onClick={this.resetPage}>Reset Page</Button>
-
-                        
+                        <p>Shape: {this.state.shape}</p>
+                        <p>Radius: {this.state.radius} {this.state.unit}</p>
+                        <p>Diameter: {this.state.diameter} {this.state.unit}</p>
+                        <p>Perimeter: {this.state.perimeter} {this.state.unit}</p>
+                        <p>Area: {this.state.area} {this.state.unit}^2</p>
+                        {this.state.unit === "in" &&
+                            <div>
+                                <p>Paint required:</p>
+                                <p>{(this.state.area * 0.00694) / 350} gallons</p>
+                                <p>{(this.state.area * 0.00694) / 100} quarts</p>
+                            </div>
+                        }
+                        {this.state.unit === "cm" &&
+                            <div>
+                                <p>Paint required:</p>
+                                <p>{(this.state.area * 0.3937 * 0.00694) / 350} gallons</p>
+                                <p>{(this.state.area* 0.3937 * 0.00694) / 100} quarts</p>
+                            </div>
+                        }
+                        <Button onClick={this.addProject}>Save Project</Button><br></br>
+                        <Button onClick={this.resetPage}>Reset Page</Button>
                     </div>
                 }
             </div>

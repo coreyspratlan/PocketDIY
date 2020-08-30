@@ -14,16 +14,20 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
       },
       width:{
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
+        defaultValue: 0
       },
       height:{
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
+        defaultValue: 0
       },
       depth:{
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
+        defaultValue: 0
       },
       radius:{
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
+        defaultValue: 0
       },
       area:{
         type: DataTypes.INTEGER
@@ -32,7 +36,8 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.INTEGER
       },
       volume:{
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
+        defaultValue: 0
       },
       unit: {
         type: DataTypes.STRING

@@ -7,6 +7,9 @@ import Footer from "../components/Footer/Footer";
 import SquareCard from "../components/InputCard/squareCard";
 import CircleCard from "../components/InputCard/circleCard";
 import TriangleCard from "../components/InputCard/triangleCard";
+import EquilateralTriangleCard from "../components/InputCard/EquilateralTriangleCard";
+import ScaleneTriangleCard from "../components/InputCard/ScaleneTriangleCard";
+import RightTriangleCard from "../components/InputCard/RightTriangleCard";
 import ShapeArea from "../components/ShapeSection/shapeArea";
 import drawing from '../images/181.png';
 import Figure from 'react-bootstrap/Figure';
@@ -57,6 +60,15 @@ function Members() {
           </Route>
           <Route exact path="/triangle">
             <TriangleCard />
+          </Route>
+          <Route exact path="/triangleeq">
+            <EquilateralTriangleCard />
+          </Route>
+          <Route exact path="/trianglesc">
+            <ScaleneTriangleCard />
+          </Route>
+          <Route exact path="/triangleri">
+            <RightTriangleCard />
           </Route>
         </Switch>
       </div>

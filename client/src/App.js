@@ -45,26 +45,8 @@ function App() {
 
         <Router>
             <div className="appbackground">
-                {/* Componetize this into Nav */}
-                <div>
-                        {!state.userLoggedIn ? (
-                            // if the user is Logged out
-                            <>
-                                <b>Welcome Guest!</b> &nbsp;&nbsp;&nbsp;
-                                <Link to="/login">Login</Link> | <Link to="/signup">Signup</Link>
-                            </>
-                        ) : (
-                            // If the user is Logged In
-                            <>
-                                <b>Welcome {state.email}!</b> &nbsp;&nbsp;&nbsp;
-                                <Link to="/members">Members</Link> | <a onClick={() => logout() }href="/login">Logout</a>
-                            </>
-                        )
-                        }
-                </div>
                 <Switch>
                     {
-                    
                         !state.userLoggedIn ? (
                             // These routes are only avaialable to LOGGED OUT users
                             <>
@@ -83,11 +65,7 @@ function App() {
                             </>
                             )
                     }
-                    {
-                        /* These routes are ALWAYS available */
-                    }
                     <Route>
-                        { /*If none of the other pages match, redirect them to the main page */}
                         <Redirect to="/members" />
                     </Route>
                 </Switch>

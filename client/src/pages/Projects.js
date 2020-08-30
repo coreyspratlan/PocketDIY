@@ -66,42 +66,59 @@ function Projects() {
             {
               project.width !== 0 &&
               <p>
-                Width: {project.width}
+                Width: {project.width} {project.unit}
               </p>
             }
             {
               project.height !== 0 &&
               <p>
-                Height: {project.height}
+                Height: {project.height} {project.unit}
               </p>
             }
             {
               project.depth !== 0 &&
               <p>
-                Depth: {project.depth}
+                Depth: {project.depth} {project.unit}
               </p>
             }
             {
               project.radius !== 0 &&
               <p>
-                Radius: {project.radius}
-              </p>
-            }
-            {
-              project.area !== 0 &&
-              <p>
-                Area: {project.area}
+                Radius: {project.radius} {project.unit}
               </p>
             }
             {
               project.perimeter !== 0 &&
               <p>
-                Perimeter: {project.perimeter}
+                Perimeter: {project.perimeter} {project.unit}
               </p>
             }
-            <p>
-              Unit: {project.unit}
-            </p>
+            {
+              project.area !== 0 &&
+              <p>
+                Area: {project.area} {project.unit}^2
+              </p>
+            }
+            {
+              project.volume !== 0 &&
+              <p>
+                Volume: {project.volume} {project.unit}^3
+              </p>
+            }
+            {project.unit === "in" &&
+              <div>
+                <p>Paint required:</p>
+                <p>{(project.area * 0.00694) / 350} gallons</p>
+                <p>{(project.area * 0.00694) / 100} quarts</p>
+              </div>
+            }
+            {project.unit === "cm" &&
+              <div>
+                <p>Paint required:</p>
+                <p>{(project.area * 0.3937 * 0.00694) / 350} gallons</p>
+                <p>{(project.area * 0.3937 * 0.00694) / 100} quarts</p>
+              </div>
+            }
             <Button onClick={() => removeProject(project.uuid)}>
               𝘅
         </Button>

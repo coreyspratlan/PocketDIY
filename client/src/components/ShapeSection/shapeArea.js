@@ -42,6 +42,39 @@ function ShapeArea() {
                         <Link to="/triangle">Isosceles Triangle</Link>
                     </Figure>
                 </div>
+                <div className='trianglediv'>
+                    <Figure>
+                        <Figure.Image
+                            width={201}
+                            height={210}
+                            alt="171x180"
+                            src={triangle}
+                        />
+                        <Link to="/triangleeq">Equilateral Triangle</Link>
+                    </Figure>
+                </div>
+                <div className='trianglediv'>
+                    <Figure>
+                        <Figure.Image
+                            width={201}
+                            height={210}
+                            alt="171x180"
+                            src={triangle}
+                        />
+                        <Link to="/trianglesc">Scalene Triangle</Link>
+                    </Figure>
+                </div>
+                <div className='trianglediv'>
+                    <Figure>
+                        <Figure.Image
+                            width={201}
+                            height={210}
+                            alt="171x180"
+                            src={triangle}
+                        />
+                        <Link to="/triangleri">Right Triangle</Link>
+                    </Figure>
+                </div>
             </div>
         </div>
     )

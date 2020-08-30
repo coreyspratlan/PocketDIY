@@ -7,13 +7,12 @@ import '../InputCard/card.css';
 import API from "../../utils/PROJECT_API";
 import { Redirect } from "react-router-dom"
 
-class TriangleCard extends Component {
+class ScaleneTriangleCard extends Component {
     state = {
         name: "My Project",
         shape: "triangle",
         width: "",
         height: "",
-        perimeter: "",
         area: "",
         unit: "",
         routePath: "",
@@ -33,7 +32,6 @@ class TriangleCard extends Component {
             shape: "triangle",
             width: "",
             height: "",
-            perimeter: "",
             area: "",
             unit: "",
             submit: ""
@@ -53,7 +51,6 @@ class TriangleCard extends Component {
                         shape: "triangle",
                         width: "",
                         height: "",
-                        perimeter: "",
                         area: "",
                         unit: "",
                         routePath: "/projects",
@@ -76,7 +73,6 @@ class TriangleCard extends Component {
                 name: "",
                 width: "",
                 height: "",
-                perimeter: "",
                 area: "",
                 submit: ""
             });
@@ -87,13 +83,11 @@ class TriangleCard extends Component {
                 name: "",
                 width: "",
                 height: "",
-                perimeter: "",
                 area: "",
                 submit: ""
             });
             return;
         } else {
-            this.setState({ perimeter: Math.sqrt((width * width) + (4 * height * height)) + Math.sqrt(width * width)});
             this.setState({ area: (height * width) / 2 });
             let newTriangle = { name, width, height, perimeter, area, unit };
             this.setState({ Triangle: newTriangle });
@@ -107,7 +101,7 @@ class TriangleCard extends Component {
         }
         return (
             <div className='inputareas'>
-                <h5> Isosceles Triangle </h5>
+                <h5> Scalene Triangle </h5>
                 {this.state.submit === "" &&
                 <Form className="cardInputs">
 
@@ -152,7 +146,6 @@ class TriangleCard extends Component {
                         <p>Shape: {this.state.shape}</p>
                         <p>Width: {this.state.width} {this.state.unit}</p>
                         <p>Height: {this.state.height} {this.state.unit}</p>
-                        <p>Perimeter: {this.state.perimeter} {this.state.unit}</p>
                         <p>Area: {this.state.area} {this.state.unit}^2</p>
                         {this.state.unit === "in" &&
                             <div>
@@ -177,4 +170,4 @@ class TriangleCard extends Component {
     }
 }
 
-export default TriangleCard
+export default ScaleneTriangleCard

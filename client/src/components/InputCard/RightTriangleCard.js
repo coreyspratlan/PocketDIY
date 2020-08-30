@@ -7,7 +7,7 @@ import '../InputCard/card.css';
 import API from "../../utils/PROJECT_API";
 import { Redirect } from "react-router-dom"
 
-class TriangleCard extends Component {
+class RightTriangleCard extends Component {
     state = {
         name: "My Project",
         shape: "triangle",
@@ -93,7 +93,7 @@ class TriangleCard extends Component {
             });
             return;
         } else {
-            this.setState({ perimeter: Math.sqrt((width * width) + (4 * height * height)) + Math.sqrt(width * width)});
+            this.setState({ perimeter: Math.sqrt(width * width) + Math.sqrt(height * height) + Math.sqrt((width * width) + (height * height))});
             this.setState({ area: (height * width) / 2 });
             let newTriangle = { name, width, height, perimeter, area, unit };
             this.setState({ Triangle: newTriangle });
@@ -107,7 +107,7 @@ class TriangleCard extends Component {
         }
         return (
             <div className='inputareas'>
-                <h5> Isosceles Triangle </h5>
+                <h5> Right Triangle </h5>
                 {this.state.submit === "" &&
                 <Form className="cardInputs">
 
@@ -177,4 +177,4 @@ class TriangleCard extends Component {
     }
 }
 
-export default TriangleCard
+export default RightTriangleCard

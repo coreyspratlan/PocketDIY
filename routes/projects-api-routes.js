@@ -24,6 +24,7 @@ module.exports = function(app) {
       radius: req.body.radius,
       area: req.body.area,
       perimeter: req.body.perimeter,
+      volume: req.body.volume,
       unit: req.body.unit,
       UserId: req.user.id
     })

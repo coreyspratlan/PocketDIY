@@ -7,12 +7,11 @@ import '../InputCard/card.css';
 import API from "../../utils/PROJECT_API";
 import { Redirect } from "react-router-dom"
 
-class TriangleCard extends Component {
+class EquilateralTriangleCard extends Component {
     state = {
         name: "My Project",
         shape: "triangle",
         width: "",
-        height: "",
         perimeter: "",
         area: "",
         unit: "",
@@ -32,7 +31,6 @@ class TriangleCard extends Component {
             name: "My Project",
             shape: "triangle",
             width: "",
-            height: "",
             perimeter: "",
             area: "",
             unit: "",
@@ -52,7 +50,6 @@ class TriangleCard extends Component {
                         name: "My Project",
                         shape: "triangle",
                         width: "",
-                        height: "",
                         perimeter: "",
                         area: "",
                         unit: "",
@@ -69,13 +66,12 @@ class TriangleCard extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        const { name, width, height, perimeter, area, unit } = this.state
-        if (width.trim().length === 0 || height.trim().length === 0) {
-            alert('Fill out width and height');
+        const { name, width, perimeter, area, unit } = this.state
+        if (width.trim().length === 0) {
+            alert('Fill out width');
             this.setState({
                 name: "",
                 width: "",
-                height: "",
                 perimeter: "",
                 area: "",
                 submit: ""
@@ -86,16 +82,15 @@ class TriangleCard extends Component {
             this.setState({
                 name: "",
                 width: "",
-                height: "",
                 perimeter: "",
                 area: "",
                 submit: ""
             });
             return;
         } else {
-            this.setState({ perimeter: Math.sqrt((width * width) + (4 * height * height)) + Math.sqrt(width * width)});
-            this.setState({ area: (height * width) / 2 });
-            let newTriangle = { name, width, height, perimeter, area, unit };
+            this.setState({ perimeter: width * 3});
+            this.setState({ area: width * width * 0.43301});
+            let newTriangle = { name, width, perimeter, area, unit };
             this.setState({ Triangle: newTriangle });
             this.setState({ submit: "Submit" });
         }
@@ -107,7 +102,7 @@ class TriangleCard extends Component {
         }
         return (
             <div className='inputareas'>
-                <h5> Isosceles Triangle </h5>
+                <h5> Equilateral Triangle </h5>
                 {this.state.submit === "" &&
                 <Form className="cardInputs">
 
@@ -117,9 +112,6 @@ class TriangleCard extends Component {
                         </Col>
                     </Row>
                     <Row>
-                        <Col>
-                            <Form.Control placeholder="height" name="height" value={this.state.height} onChange={this.changeValue} />
-                        </Col>
                         <Col>
                             <Form.Control
                                 as="select"
@@ -151,7 +143,6 @@ class TriangleCard extends Component {
                         </Col>
                         <p>Shape: {this.state.shape}</p>
                         <p>Width: {this.state.width} {this.state.unit}</p>
-                        <p>Height: {this.state.height} {this.state.unit}</p>
                         <p>Perimeter: {this.state.perimeter} {this.state.unit}</p>
                         <p>Area: {this.state.area} {this.state.unit}^2</p>
                         {this.state.unit === "in" &&
@@ -177,4 +168,4 @@ class TriangleCard extends Component {
     }
 }
 
-export default TriangleCard
+export default EquilateralTriangleCard

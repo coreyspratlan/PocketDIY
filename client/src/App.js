@@ -33,14 +33,6 @@ function App() {
         })
     },[]);
 
-    const logout = () => {
-        API.logout().then(() => {
-            dispatch({
-                type: AUTH_SET_LOGGED_OUT
-            })
-        })
-    }
-
     return (
 
         <Router>
@@ -57,7 +49,7 @@ function App() {
                         ) : (
                             // These routes are only available to LOGGED IN users
                             <>
-                                <Route exact path={["/login","/signup"]}>
+                                <Route exact path={["/login","/signup","/"]}>
                                     {/* If you are logged in, going to the login/signup page will take you to the members page */}
                                     <Redirect to="/members" />
                                 </Route>

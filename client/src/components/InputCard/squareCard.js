@@ -178,12 +178,6 @@ class SquareCard extends Component {
                     </Form>
                 }
                 {
-                        <Col xs="auto" className="my-1">
-                            <Button type="submit" onClick={this.handleFormSubmit} >Submit</Button>
-                        </Col>
-                    </Form>
-                }
-                {
                     this.state.submit==="Submit"&&
 
                     <div className="projectSection">

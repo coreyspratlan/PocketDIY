@@ -7,7 +7,7 @@ import '../InputCard/card.css';
 import API from "../../utils/PROJECT_API";
 import { Redirect } from "react-router-dom"
 
-class TriangleCard extends Component {
+class RightTriangleCard extends Component {
     state = {
         name: "My Project",
         shape: "triangle",
@@ -93,7 +93,7 @@ class TriangleCard extends Component {
             });
             return;
         } else {
-            this.setState({ perimeter: Math.sqrt((width * width) + (4 * height * height)) + Math.sqrt(width * width)});
+            this.setState({ perimeter: Math.sqrt(width * width) + Math.sqrt(height * height) + Math.sqrt((width * width) + (height * height))});
             this.setState({ area: (height * width) / 2 });
             let newTriangle = { name, width, height, perimeter, area, unit };
             this.setState({ Triangle: newTriangle });
@@ -107,18 +107,18 @@ class TriangleCard extends Component {
         }
         return (
             <div className='inputareas'>
-                <h5> Isosceles Triangle </h5>
+                <h5> Right Triangle </h5>
                 {this.state.submit === "" &&
                 <Form className="cardInputs">
 
                     <Row>
                         <Col>
-                            <Form.Control placeholder="width" className="userinputbox" name="width" value={this.state.width} onChange={this.changeValue} />
+                            <Form.Control placeholder="width" name="width" value={this.state.width} onChange={this.changeValue} />
                         </Col>
                     </Row>
                     <Row>
                         <Col>
-                            <Form.Control placeholder="height" className="userinputbox" name="height" value={this.state.height} onChange={this.changeValue} />
+                            <Form.Control placeholder="height" name="height" value={this.state.height} onChange={this.changeValue} />
                         </Col>
                         <Col>
                             <Form.Control
@@ -169,8 +169,6 @@ class TriangleCard extends Component {
                             </div>
                         }
                         <Button onClick={this.addProject}>Save Project</Button>
-                        <br></br>
-                        <br></br>
                         <Button onClick={this.resetPage}>Reset Page</Button>
                     </div>
                 }
@@ -179,4 +177,4 @@ class TriangleCard extends Component {
     }
 }
 
-export default TriangleCard
+export default RightTriangleCard

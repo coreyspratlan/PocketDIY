@@ -66,44 +66,61 @@ function Projects() {
                 <h3><span className="project-name-label">Project Name:</span> <span className="project-name">{project.name}</span>
                 </h3>
                 {
-                  project.width!==0&&
-                  <p>
-                    <span className="project-data-label">Width:</span> <span className="project-data">{project.width}
-                    </span></p>
-                }
-                {
-                  project.height!==0&&
-                  <p>
-                    <span className="project-data-label">Height:</span> <span className="project-data">{project.height}
-                    </span></p>
-                }
-                {
-                  project.depth!==0&&
-                  <p>
-                    <span className="project-data-label">Depth:</span> <span className="project-data">{project.depth}
-                    </span></p>
-                }
-                {
-                  project.radius!==0&&
-                  <p>
-                    <span className="project-data-label">Radius:</span> <span className="project-data">{project.radius}
-                    </span></p>
-                }
-                {
-                  project.area!==0&&
-                  <p>
-                    <span className="project-data-label">Area:</span> <span className="project-data">{project.area}
-                    </span></p>
-                }
-                {
-                  project.perimeter!==0&&
-                  <p>
-                    <span className="project-data-label">Perimeter:</span> <span className="project-data">{project.perimeter}
-                    </span></p>
-                }
-                <p>
-                  <span className="project-data-label">Unit:</span> {project.unit}
-                </p>
+              project.width !== 0 &&
+              <p>
+                Width: {project.width} {project.unit}
+              </p>
+            }
+            {
+              project.height !== 0 &&
+              <p>
+                Height: {project.height} {project.unit}
+              </p>
+            }
+            {
+              project.depth !== 0 &&
+              <p>
+                Depth: {project.depth} {project.unit}
+              </p>
+            }
+            {
+              project.radius !== 0 &&
+              <p>
+                Radius: {project.radius} {project.unit}
+              </p>
+            }
+            {
+              project.perimeter !== 0 &&
+              <p>
+                Perimeter: {project.perimeter} {project.unit}
+              </p>
+            }
+            {
+              project.area !== 0 &&
+              <p>
+                Area: {project.area} {project.unit}^2
+              </p>
+            }
+            {
+              project.volume !== 0 &&
+              <p>
+                Volume: {project.volume} {project.unit}^3
+              </p>
+            }
+            {project.unit === "in" &&
+              <div>
+                <p>Paint required:</p>
+                <p>{(project.area * 0.00694) / 350} gallons</p>
+                <p>{(project.area * 0.00694) / 100} quarts</p>
+              </div>
+            }
+            {project.unit === "cm" &&
+              <div>
+                <p>Paint required:</p>
+                <p>{(project.area * 0.3937 * 0.00694) / 350} gallons</p>
+                <p>{(project.area * 0.3937 * 0.00694) / 100} quarts</p>
+              </div>
+            }
               </ListItem>
               <div className="close-button">
                 <Button onClick={() => removeProject(project.uuid)}>

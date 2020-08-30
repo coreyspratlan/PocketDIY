@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React,{Component} from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
@@ -6,11 +6,11 @@ import Row from 'react-bootstrap/Row';
 import '../InputCard/card.css';
 import '../../css/main.css';
 import API from "../../utils/PROJECT_API";
-import { Redirect } from "react-router-dom"
+import {Redirect} from "react-router-dom"
 
 
 class CircleCard extends Component {
-    state = {
+    state={
         name: "My Project",
         shape: "circle",
         perimeter: "",
@@ -22,13 +22,14 @@ class CircleCard extends Component {
         submit: ""
     };
 
-    changeValue = (e) => {
-        const value = e.target.value;
-        const name = e.target.name;
-        this.setState({ [name]: value });
+    changeValue=(e) => {
+        const value=e.target.value;
+        const name=e.target.name;
+        this.setState({[name]: value});
     }
 
-    resetPage = (e) => {
+
+    addProject = (e) => {
         e.preventDefault();
         this.setState({
             name: "My Project",
@@ -42,9 +43,9 @@ class CircleCard extends Component {
         })
     }
 
-    addProject = (e) => {
+    addProject=(e) => {
         e.preventDefault();
-        if (this.state.name.trim().length === 0) {
+        if(this.state.name.trim().length===0) {
             alert('Fill out a project name');
             return;
         } else {
@@ -69,10 +70,10 @@ class CircleCard extends Component {
         };
     }
 
-    handleFormSubmit = event => {
-        const { radius, diameter, perimeter, area, unit } = this.state
+    handleFormSubmit=event => {
+        const {radius,diameter,perimeter,area,unit}=this.state
         event.preventDefault();
-        if (radius.trim().length === 0 && diameter.trim().length === 0) {
+        if(radius.trim().length===0&&diameter.trim().length===0) {
             alert('Fill out radius or diameter');
             this.setState({
                 name: "",
@@ -81,6 +82,7 @@ class CircleCard extends Component {
                 submit: ""
             });
             return;
+
         } else if (unit === "") {
             alert('Please select a unit');
             this.setState({
@@ -98,18 +100,18 @@ class CircleCard extends Component {
             this.setState({ Circle: newCircle });
             this.setState({ submit: "Submit" })
         } else {
-            this.setState({ diameter: radius * 2 });
-            this.setState({ perimeter: radius * 6.28318 });
-            this.setState({ area: radius * radius * 3.14159 });
-            let newCircle = { radius, diameter, perimeter, area, unit }
-            this.setState({ Circle: newCircle });
-            this.setState({ submit: "Submit" })
+            this.setState({diameter: radius*2});
+            this.setState({perimeter: radius*6.28318});
+            this.setState({area: radius*radius*3.14159});
+            let newCircle={radius,diameter,perimeter,area,unit}
+            this.setState({Circle: newCircle});
+            this.setState({submit: "Submit"})
 
         };
     };
 
     render() {
-        if (this.state.routePath !== "") {
+        if(this.state.routePath!=="") {
             return <Redirect to={this.state.routePath} />
         }
         return (
@@ -150,11 +152,11 @@ class CircleCard extends Component {
                     </Form>
                 }
                 {
-                    this.state.submit === "Submit" &&
+                    this.state.submit==="Submit"&&
 
                     <div className="projectSection">
                         <Col>
-                            <Form.Control placeholder="Project Name" name="name" value={this.state.name} onChange={this.changeValue} />
+                            <Form.Control placeholder="Project Name" className="userinputbox" name="name" value={this.state.name} onChange={this.changeValue} />
                         </Col>
                         <p>Shape: {this.state.shape}</p>
                         <p>Radius: {this.state.radius} {this.state.unit}</p>
@@ -177,7 +179,6 @@ class CircleCard extends Component {
                         }
                         <Button onClick={this.addProject}>Save Project</Button><br></br>
                         <Button onClick={this.resetPage}>Reset Page</Button>
-
                     </div>
                 }
             </div>

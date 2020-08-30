@@ -1,19 +1,13 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card';
 
-
 function Footer() {
 
-    const styles= {
-        borderColor: "black",
-        backgroundColor: "lightgray"
-    }
-
-
     return (
-        <div style={styles}>
+
+        <div className="footer">
             <Card>
-                <Card.Footer>This is a Footer</Card.Footer>
+                <Card.Footer>PocketDIY</Card.Footer>
             </Card>
         </div>
     )

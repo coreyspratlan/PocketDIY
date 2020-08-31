@@ -53,7 +53,6 @@ class SquareCard extends Component {
             area: "",
             unit: "",
             radius: "",
-            depth: "",
             volume: "",
             diameter: "",
             submit: ""
@@ -90,7 +89,7 @@ class SquareCard extends Component {
 
     handleFormSubmit=event => {
         event.preventDefault();
-        const {name,width,height,depth,volume,perimeter,area,unit}=this.state
+        const {name,width,height,depth,volume,area,unit}=this.state
         if(width.trim().length===0) {
             alert('Fill out width');
             this.setState({

@@ -33,7 +33,8 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.INTEGER
       },
       perimeter:{
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
+        defaultValue: 0
       },
       volume:{
         type: DataTypes.INTEGER,

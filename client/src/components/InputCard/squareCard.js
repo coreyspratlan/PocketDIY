@@ -151,7 +151,7 @@ class SquareCard extends Component {
 
                         <Row>
                             <Col>
-                                <Form.Control placeholder="width" name="width" value={this.state.width} onChange={this.changeValue} />
+                                <Form.Control placeholder="width" className="userinputbox" name="width" value={this.state.width} onChange={this.changeValue} />
                             </Col>
                         </Row>
                         <Row>

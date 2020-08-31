@@ -147,7 +147,7 @@ class TriangleCard extends Component {
 
                     <div className="projectSection">
                         <Col>
-                            <Form.Control placeholder="Project Name" name="name" value={this.state.name} onChange={this.changeValue} />
+                            <Form.Control placeholder="Project Name" className="userinputbox" name="name" value={this.state.name} onChange={this.changeValue} />
                         </Col>
                         <p>Shape: {this.state.shape}</p>
                         <p>Width: {this.state.width} {this.state.unit}</p>

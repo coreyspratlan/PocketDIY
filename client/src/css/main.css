@@ -162,6 +162,7 @@ h5 {
     /* height: 5vh;  */
     background-color: transparent;
     font-family: "Lato", sans-serif;
+    z-index: -1;
 }
 
 

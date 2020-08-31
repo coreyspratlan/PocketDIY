@@ -1,5 +1,5 @@
 import React,{useRef,useState} from "react"
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import API from "../utils/API";
 import {AUTH_SET_LOGGED_IN} from "../utils/actions";
 import {useStoreContext} from '../utils/GlobalStore';
@@ -12,6 +12,8 @@ function Login() {
     const emailRef=useRef();
     const passwordRef=useRef();
     const [,dispatch]=useStoreContext();
+
+    const history = useHistory();
 
     const handleLogin=(event) => {
         event.preventDefault();
@@ -28,6 +30,7 @@ function Login() {
                     email
                 }
             });
+            history.push("/members")
         }).catch(err => {
             setShowError(true);
             setErrorMessage("An error occurred during login");

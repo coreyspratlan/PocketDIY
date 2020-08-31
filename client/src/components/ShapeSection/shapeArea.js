@@ -1,8 +1,8 @@
 import React from 'react'
 import Figure from 'react-bootstrap/Figure';
-import square from '../../images/drawn-square.png';
-import circle from '../../images/drawn-circle.png';
-import triangle from '../../images/drawn-triangle.png';
+import square from '../../images/square.png';
+import circle from '../../images/circle.png';
+import triangle from '../../images/triangle.png';
 import { Link } from "react-router-dom";
 
 function ShapeArea() {

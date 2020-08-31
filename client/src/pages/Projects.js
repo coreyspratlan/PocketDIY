@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import API from "../utils/PROJECT_API"
 import { ListItem } from "../components/List";
-import square from '../images/drawn-square.png';
+import square from '../images/square.png';
 import cube from '../images/drawn-cube.png';
-import circle from '../images/drawn-circle.png';
-import triangle from '../images/drawn-triangle.png';
+import circle from '../images/circle.png';
+import triangle from '../images/triangle.png';
 import Figure from 'react-bootstrap/Figure';
 import Button from 'react-bootstrap/Button';
 import '../css/projects.css';
@@ -122,9 +122,44 @@ function Projects() {
                 }
                 {project.unit === "cm" &&
                   <div>
-                    <p className="project-required-label">Paint required:</p>
-                    <p><span className="project-required-data">{parseFloat(((project.area * 0.3937 * 0.00694) / 350)).toFixed(2)}</span> <span className="project-metric">gallons</span></p>
-                    <p><span className="project-required-data">{parseFloat(((project.area * 0.3937 * 0.00694) / 100)).toFixed(2)}</span> <span className="project-metric">quarts</span></p>
+
+                    {
+                      project.area !== 0 &&
+                      <p>
+                        <span className="project-data-label">surface area:</span> <span className="project-data">{(project.area)}</span> <span className="project-metric">{project.unit}^2</span>
+                      </p>
+                    }
+                    {project.unit === "in" &&
+                      <div>
+                        <p className="project-required-label">Paint required:</p>
+                        <p><span className="project-required-data">{parseFloat(((project.area * 6 * 0.00694) / 350)).toFixed(2)}</span> <span className="project-metric">gallons</span></p>
+                        <p><span className="project-required-data">{parseFloat(((project.area * 6 * 0.00694) / 100)).toFixed(2)}</span> <span className="project-metric">quarts</span></p>
+                      </div>
+                    }
+                    {project.unit === "cm" &&
+                      <div>
+                        <p className="project-required-label">Paint required:</p>
+                        <p><span className="project-required-data">{parseFloat(((project.area * 6 * 0.3937 * 0.00694) / 350)).toFixed(2)}</span> <span className="project-metric">gallons</span></p>
+                        <p><span className="project-required-data">{parseFloat(((project.area * 6 * 0.3937 * 0.00694) / 100)).toFixed(2)}</span> <span className="project-metric">quarts</span></p>
+                      </div>
+                    }
+                    {
+                      project.volume !== 0 &&
+                      <p>
+                        <span className="project-data-label">volume:</span> <span className="project-data">{(project.volume)}</span> <span className="project-metric">{project.unit}^3</span>
+                      </p>
+                    }
+                    {project.unit === "in" &&
+                      <div>
+                        <p><span className="project-required-data">{parseFloat(project.volume * 0.004329).toFixed(2)}</span> <span className="project-metric">gallons</span></p>
+                      </div>
+                    }
+                    {project.unit === "cm" &&
+                      <div>
+                        <p><span className="project-required-data">{parseFloat(project.volume * 0.000264172).toFixed(2)}</span> <span className="project-metric">gallons</span></p>
+                      </div>
+                    }
+
                   </div>
 
                 }

@@ -122,12 +122,12 @@ class CircleCard extends Component {
                         <Row>
                             {this.state.diameter === "" &&
                                 <Col>
-                                    <Form.Control placeholder="radius" name="radius" value={this.state.radius} onChange={this.changeValue} />
+                                    <Form.Control placeholder="radius" className="userinputbox" name="radius" value={this.state.radius} onChange={this.changeValue} />
                                 </Col>
                             }
                             {this.state.radius === "" &&
                                 <Col>
-                                    <Form.Control placeholder="diameter" name="diameter" value={this.state.diameter} onChange={this.changeValue} />
+                                    <Form.Control placeholder="diameter" className="userinputbox" name="diameter" value={this.state.diameter} onChange={this.changeValue} />
                                 </Col>
                             }
                             <Col>

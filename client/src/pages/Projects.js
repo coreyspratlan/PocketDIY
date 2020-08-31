@@ -45,7 +45,7 @@ function Projects() {
 
       {projects.slice(0).reverse().map(project => {
         return (
-          <Row style={{ height: 300 }} className="project-container" key={project.uuid}>
+          <Row style={{ height: 320 }} className="project-container" key={project.uuid}>
             <a href={"/projects/" + project.uuid}>
             </a>
             <Col md={3} className="project-shape">
@@ -152,6 +152,16 @@ function Projects() {
                       <p>
                         <span className="project-data-label">volume:</span> <span className="project-data">{(project.volume)}</span> <span className="project-metric">{project.unit}^3</span>
                       </p>
+                    }
+                    {project.unit === "in" &&
+                      <div>
+                        <p><span className="project-required-data">{parseFloat(project.volume * 0.004329).toFixed(2)}</span> <span className="project-metric">gallons</span></p>
+                      </div>
+                    }
+                    {project.unit === "cm" &&
+                      <div>
+                        <p><span className="project-required-data">{parseFloat(project.volume * 0.000264172).toFixed(2)}</span> <span className="project-metric">gallons</span></p>
+                      </div>
                     }
                   </div>
                 }

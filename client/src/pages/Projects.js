@@ -155,8 +155,6 @@ function Projects() {
           </Row>
         );
       })}
-      <Row>
-      </Row>
     </Container>
   );
 }

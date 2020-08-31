@@ -1,9 +1,9 @@
 import React from 'react'
 import Figure from 'react-bootstrap/Figure';
-import square from '../../images/drawn-square.png';
+import square from '../../images/square.png';
 import cube from '../../images/drawn-cube.png';
-import circle from '../../images/drawn-circle.png';
-import triangle from '../../images/drawn-triangle.png';
+import circle from '../../images/circle.png';
+import triangle from '../../images/triangle.png';
 import { Link } from "react-router-dom";
 
 function ShapeArea() {
@@ -74,7 +74,7 @@ function ShapeArea() {
                             alt="171x180"
                             src={triangle}
                         />
-                        <Link  className="trianglebutton" to="/trianglesc">Scalene Triangle</Link>
+                        <Link className="trianglebutton" to="/trianglesc">Scalene Triangle</Link>
                     </Figure>
                 </div>
                 <div className='trianglediv'>

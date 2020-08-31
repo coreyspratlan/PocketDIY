@@ -6,26 +6,25 @@
     position: relative; 
     background: white;
     opacity: .9;
-  
+    border-radius: 20px;
+}
+
+.project-container:hover {
+    border: solid 5px #0766C5;
+    opacity: 1;
 }
 
 .project-shape {
-    border-style: solid red 2px;
     height: 100%;
     display: inline-block;
 }
 
 .project-content {
     display: inline-block;
-    height: 100%; 
-}
-
-.project-div {
-    margin: 10px;
+    height: 100%;
 }
 
 .projects-label {
-    color: red;
     text-align: center;   
 }
 
@@ -37,10 +36,11 @@
 
 .project-name-label {
     color: blue;
+    font-weight: bold;
 }
 
 .project-name {
-    color: pink;
+    font-weight: bold;
 }
 
 .project-data-label {
@@ -52,6 +52,26 @@
     font-weight: bold;
 }
 
+.project-metric {
+    color: pink;
+}
 .projects-container {
     padding-bottom: 200px;
+}
+
+.project-shape-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.project-required-label {
+    text-decoration-line: underline;
+    color: blue;
+    font-weight: bold;
+}
+
+.project-required-data {
+    font-weight: bold;
 }

@@ -2,7 +2,11 @@
     margin-top: 10px;
     margin-bottom: 10px;
     box-shadow: 2px 8px 12px 1px rgba(86, 117, 116, 0.45);
-    margin-top: 1em;     
+    margin-top: 1em; 
+    position: relative; 
+    background: white;
+    opacity: .9;
+  
 }
 
 .project-shape {
@@ -46,4 +50,8 @@
 
 .project-data {
     font-weight: bold;
+}
+
+.projects-container {
+    padding-bottom: 200px;
 }

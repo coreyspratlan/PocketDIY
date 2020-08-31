@@ -34,7 +34,7 @@ function Projects() {
   };
 
   return (
-    <Container fluid={false} style={{minHeight: "100vh"}}>
+    <div className="container projects-container">
       <Row className="light">
         <h1 className="projects-label">Projects</h1>
       </Row>
@@ -133,7 +133,7 @@ function Projects() {
       })}
         <Row>
       </Row>
-    </Container>
+    </div>
   );
 }
 

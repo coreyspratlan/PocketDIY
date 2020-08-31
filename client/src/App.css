@@ -7,8 +7,46 @@ body {
   background-color: #ff8473;
   background-image: linear-gradient(to bottom right, rgb(255, 255, 255), rgb(255, 255, 255) 60%, transparent 60%);
   min-width: 99%;
-  min-height: 100%;
+  min-height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  position: relative;
 }
+
+.footer-container {
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: solid #FFB570 1px;
+}
+
+.pocketdyi-logo {
+  text-shadow: 2px 2px 4px #000;
+  font-family: 'Special Elite', cursive;
+  font-size: 30px;
+}
+
+.team-names {
+  padding-top: 15px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 20px;
+  color: #0766C5;
+}
+
+.team-names:hover {
+  text-decoration: none;
+}
+
+.pocketdyi-logo:hover {
+  transform: scale(1.5);
+  text-decoration: none;
+}
+
+.copyright-container {
+  padding-left: 20px;
+}
+

@@ -33,38 +33,12 @@ function App() {
         })
     },[]);
 
-    const logout = () => {
-        API.logout().then(() => {
-            dispatch({
-                type: AUTH_SET_LOGGED_OUT
-            })
-        })
-    }
-
     return (
 
         <Router>
             <div className="appbackground">
-                {/* Componetize this into Nav */}
-                <div>
-                        {!state.userLoggedIn ? (
-                            // if the user is Logged out
-                            <>
-                                <b>Welcome Guest!</b> &nbsp;&nbsp;&nbsp;
-                                <Link to="/login">Login</Link> | <Link to="/signup">Signup</Link>
-                            </>
-                        ) : (
-                            // If the user is Logged In
-                            <>
-                                <b>Welcome {state.email}!</b> &nbsp;&nbsp;&nbsp;
-                                <Link to="/members">Members</Link> | <a onClick={() => logout() }href="/login">Logout</a>
-                            </>
-                        )
-                        }
-                </div>
                 <Switch>
                     {
-                    
                         !state.userLoggedIn ? (
                             // These routes are only avaialable to LOGGED OUT users
                             <>
@@ -75,7 +49,7 @@ function App() {
                         ) : (
                             // These routes are only available to LOGGED IN users
                             <>
-                                <Route exact path={["/login","/signup"]}>
+                                <Route exact path={["/login","/signup","/"]}>
                                     {/* If you are logged in, going to the login/signup page will take you to the members page */}
                                     <Redirect to="/members" />
                                 </Route>
@@ -83,12 +57,8 @@ function App() {
                             </>
                             )
                     }
-                    {
-                        /* These routes are ALWAYS available */
-                    }
                     <Route>
-                        { /*If none of the other pages match, redirect them to the main page */}
-                        <Redirect to="/login" />
+                        <Redirect to="/members" />
                     </Route>
                 </Switch>
                 <Footer />

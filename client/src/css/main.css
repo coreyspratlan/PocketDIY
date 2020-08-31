@@ -233,7 +233,7 @@ h5 {
       border: 1px solid lightcoral;
       background-color: transparent !important;
       -webkit-appearance: none;
-      color: white;
+      color: lightblue;
     }
     .signup input:-webkit-autofill {
       background-color: transparent !important;

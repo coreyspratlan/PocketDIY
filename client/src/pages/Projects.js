@@ -2,9 +2,9 @@ import React,{useEffect,useState} from "react";
 import {Container} from "../components/Grid";
 import API from "../utils/PROJECT_API"
 import {ListItem} from "../components/List";
-import square from '../images/drawn-square.png';
-import circle from '../images/drawn-circle.png';
-import triangle from '../images/drawn-triangle.png';
+import square from '../images/square.png';
+import circle from '../images/circle.png';
+import triangle from '../images/triangle.png';
 import Figure from 'react-bootstrap/Figure';
 import Button from 'react-bootstrap/Button';
 import '../css/projects.css';
@@ -136,9 +136,10 @@ function Projects() {
           </Row>
         );
       })}
-        <Row>
-      </Row>
     </div>
+
+    </Container>
+
   );
 }
 

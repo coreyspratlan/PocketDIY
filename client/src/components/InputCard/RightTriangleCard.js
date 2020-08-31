@@ -113,12 +113,12 @@ class RightTriangleCard extends Component {
 
                     <Row>
                         <Col>
-                            <Form.Control placeholder="width" name="width" value={this.state.width} onChange={this.changeValue} />
+                            <Form.Control placeholder="width" className="userinputbox" name="width" value={this.state.width} onChange={this.changeValue} />
                         </Col>
                     </Row>
                     <Row>
                         <Col>
-                            <Form.Control placeholder="height" name="height" value={this.state.height} onChange={this.changeValue} />
+                            <Form.Control placeholder="height" className="userinputbox" name="height" value={this.state.height} onChange={this.changeValue} />
                         </Col>
                         <Col>
                             <Form.Control
@@ -147,7 +147,7 @@ class RightTriangleCard extends Component {
 
                     <div className="projectSection">
                         <Col>
-                            <Form.Control placeholder="Project Name" name="name" value={this.state.name} onChange={this.changeValue} />
+                            <Form.Control placeholder="Project Name" className="userinputbox" name="name" value={this.state.name} onChange={this.changeValue} />
                         </Col>
                         <p>Shape: {this.state.shape}</p>
                         <p>Width: {this.state.width} {this.state.unit}</p>

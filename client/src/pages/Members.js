@@ -3,7 +3,6 @@ import { useStoreContext } from '../utils/GlobalStore';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Projects from "./Projects.js";
 import Nav from "../components/Nav";
-import Footer from "../components/Footer/Footer";
 import SquareCard from "../components/InputCard/squareCard";
 import CubeCard from "../components/InputCard/cubeCard";
 import CircleCard from "../components/InputCard/circleCard";

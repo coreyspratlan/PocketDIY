@@ -1,38 +1,16 @@
-import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch, Link, Redirect } from 'react-router-dom'
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import './App.css';
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Members from "./pages/Members";
 import { useStoreContext } from './utils/GlobalStore';
-import API from './utils/API';
 import Footer from './components/Footer/Footer'
-import { AUTH_SET_LOGGED_IN, AUTH_SET_LOGGED_OUT } from "./utils/actions";
-
 
 function App() {
-    // Our provider is setup in index.js so we can use the GlobalStore here easily.
-
-    // Something we want to do at the beginning of the application is check if the user is logged in or not, if the user is, we'll
-    // usedispatch an action 
-    const [state, dispatch] = useStoreContext();
-    useEffect(() => {
-        // Try getting our user-data, if the user is logged in, we will update our GlobalStore to refelct that
-        API.checkUserInfo().then(response => {
-            const { email } = response.data;
-            dispatch({
-                type: AUTH_SET_LOGGED_IN,
-                data: {
-                    email
-                }
-            })
-        }).catch(err => {
-            dispatch({
-                type: AUTH_SET_LOGGED_OUT
-            })
-        })
-    },[]);
-
+  
+    const [state] = useStoreContext();
+   
     return (
 
         <Router>

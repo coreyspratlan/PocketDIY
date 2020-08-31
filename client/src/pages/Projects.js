@@ -1,23 +1,23 @@
-import React,{useEffect,useState} from "react";
-import {Container} from "../components/Grid";
+import React, { useEffect, useState } from "react";
 import API from "../utils/PROJECT_API"
-import {ListItem} from "../components/List";
-import square from '../images/square.png';
-import circle from '../images/circle.png';
-import triangle from '../images/triangle.png';
+import { ListItem } from "../components/List";
+import square from '../images/drawn-square.png';
+import cube from '../images/drawn-cube.png';
+import circle from '../images/drawn-circle.png';
+import triangle from '../images/drawn-triangle.png';
 import Figure from 'react-bootstrap/Figure';
 import Button from 'react-bootstrap/Button';
 import '../css/projects.css';
-import {Col,Row,Card,ListGroup,ListGroupItem} from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import '../css/main.css';
 
 function Projects() {
 
-  const [projects,setProjects]=useState([])
+  const [projects, setProjects] = useState([])
 
   useEffect(() => {
     loadProjects()
-  },[])
+  }, [])
 
   function loadProjects() {
     API.getProjects()
@@ -33,9 +33,9 @@ function Projects() {
         loadProjects());
   };
 
-  function formatWithDecimal(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
+  //   function (x) {
+  //     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  // }
 
   return (
     <div className="container projects-container">
@@ -45,8 +45,8 @@ function Projects() {
 
       {projects.slice(0).reverse().map(project => {
         return (
-          <Row style={{height: 250}} className="project-container" key={project.uuid}>
-            <a href={"/projects/"+project.uuid}>
+          <Row style={{ height: 300 }} className="project-container" key={project.uuid}>
+            <a href={"/projects/" + project.uuid}>
             </a>
             <Col md={3} className="project-shape">
               <Figure>
@@ -56,8 +56,9 @@ function Projects() {
                   alt="171x180"
                   className="project-shape-img"
                   src={(() => {
-                    switch(project.shape) {
+                    switch (project.shape) {
                       case "circle": return circle;
+                      case "cube": return cube;
                       case "square": return square;
                       case "triangle": return triangle;
                       default: return "";
@@ -71,61 +72,89 @@ function Projects() {
                 <h3><span className="project-name-label">Project Name:</span> <span className="project-name">{project.name}</span>
                 </h3>
                 {
-              project.width !== 0 &&
-              <p>
-                <span className="project-data-label">Width:</span> <span className="project-data">{formatWithDecimal(project.width)}</span> <span className="project-metric">{project.unit}</span>
-              </p>
-            }
-            {
-              project.height !== 0 &&
-              <p>
-                <span className="project-data-label">Height:</span> <span className="project-data">{formatWithDecimal(project.height)}</span> <span className="project-metric">{project.unit}</span>
-              </p>
-            }
-            {
-              project.depth !== 0 &&
-              <p>
-                <span className="project-data-label">Depth:</span> <span className="project-data">{formatWithDecimal(project.depth)}</span> <span className="project-metric">{project.unit}</span>
-              </p>
-            }
-            {
-              project.radius !== 0 &&
-              <p>
-              <span className="project-data-label">Radius:</span> <span className="project-data">{formatWithDecimal(project.radius)}</span> <span className="project-metric">{project.unit}</span>
-            </p>
-            }
-            {
-              project.perimeter !== 0 &&
-              <p>
-                <span className="project-data-label">perimeter:</span> <span className="project-data">{formatWithDecimal(project.perimeter)}</span> <span className="project-metric">{project.unit}</span>
-              </p>
-            }
-            {
-              project.area !== 0 &&
-              <p>
-              <span className="project-data-label">area:</span> <span className="project-data">{formatWithDecimal(project.area)}</span> <span className="project-metric">{project.unit}</span>
-            </p>
-            }
-            {
-              project.volume !== 0 &&
-              <p>
-                <span className="project-data-label">volume:</span> <span className="project-data">{formatWithDecimal(project.volume)}</span> <span className="project-metric">{project.unit}</span>
-              </p>
-            }
-            {project.unit === "in" &&
-              <div>
-                <p className="project-required-label">Paint required:</p>
-                <p><span className="project-required-data">{parseFloat(((project.area * 0.00694) / 350)).toFixed(2)}</span> <span className="project-metric">gallons</span></p>
-                <p><span className="project-required-data">{parseFloat(((project.area * 0.00694) / 100)).toFixed(2)}</span> <span className="project-metric">quarts</span></p>
-              </div>
-            }
-            {project.unit === "cm" &&
-              <div>
-                <p className="project-required-label">Paint required:</p>
-                <p><span className="project-required-data">{parseFloat(((project.area * 0.3937 * 0.00694) / 350)).toFixed(2)}</span> <span className="project-metric">gallons</span></p>
-                <p><span className="project-required-data">{parseFloat(((project.area * 0.3937 * 0.00694) / 100)).toFixed(2)}</span> <span className="project-metric">quarts</span></p>
-              </div>
-            }
+                  project.width !== 0 &&
+                  <p>
+                    <span className="project-data-label">Width:</span> <span className="project-data">{(project.width)}</span> <span className="project-metric">{project.unit}</span>
+                  </p>
+                }
+                {
+                  project.height !== 0 &&
+                  <p>
+                    <span className="project-data-label">Height:</span> <span className="project-data">{(project.height)}</span> <span className="project-metric">{project.unit}</span>
+                  </p>
+                }
+                {
+                  project.depth !== 0 &&
+                  <p>
+                    <span className="project-data-label">Depth:</span> <span className="project-data">{(project.depth)}</span> <span className="project-metric">{project.unit}</span>
+                  </p>
+                }
+                {
+                  project.radius !== 0 &&
+                  <p>
+                    <span className="project-data-label">Radius:</span> <span className="project-data">{(project.radius)}</span> <span className="project-metric">{project.unit}</span>
+                  </p>
+                }
+                {
+                  project.perimeter !== 0 &&
+                  <p>
+                    <span className="project-data-label">perimeter:</span> <span className="project-data">{(project.perimeter)}</span> <span className="project-metric">{project.unit}</span>
+                  </p>
+                }
+                {project.shape !== "cube" &&
+                  <div>
+                    {
+                      project.area !== 0 &&
+                      <p>
+                        <span className="project-data-label">area:</span> <span className="project-data">{(project.area)}</span> <span className="project-metric">{project.unit}^2</span>
+                      </p>
+                    }
+                    {project.unit === "in" &&
+                      <div>
+                        <p className="project-required-label">Paint required:</p>
+                        <p><span className="project-required-data">{parseFloat(((project.area * 0.00694) / 350)).toFixed(2)}</span> <span className="project-metric">gallons</span></p>
+                        <p><span className="project-required-data">{parseFloat(((project.area * 0.00694) / 100)).toFixed(2)}</span> <span className="project-metric">quarts</span></p>
+                      </div>
+                    }
+                    {project.unit === "cm" &&
+                      <div>
+                        <p className="project-required-label">Paint required:</p>
+                        <p><span className="project-required-data">{parseFloat(((project.area * 0.3937 * 0.00694) / 350)).toFixed(2)}</span> <span className="project-metric">gallons</span></p>
+                        <p><span className="project-required-data">{parseFloat(((project.area * 0.3937 * 0.00694) / 100)).toFixed(2)}</span> <span className="project-metric">quarts</span></p>
+                      </div>
+                    }
+                  </div>
+                }
+                {project.shape === "cube" &&
+                  <div>
+                    {
+                      project.area !== 0 &&
+                      <p>
+                        <span className="project-data-label">surface area:</span> <span className="project-data">{(project.area)}</span> <span className="project-metric">{project.unit}^2</span>
+                      </p>
+                    }
+                    {project.unit === "in" &&
+                      <div>
+                        <p className="project-required-label">Paint required:</p>
+                        <p><span className="project-required-data">{parseFloat(((project.area * 6 * 0.00694) / 350)).toFixed(2)}</span> <span className="project-metric">gallons</span></p>
+                        <p><span className="project-required-data">{parseFloat(((project.area * 6 * 0.00694) / 100)).toFixed(2)}</span> <span className="project-metric">quarts</span></p>
+                      </div>
+                    }
+                    {project.unit === "cm" &&
+                      <div>
+                        <p className="project-required-label">Paint required:</p>
+                        <p><span className="project-required-data">{parseFloat(((project.area * 6 * 0.3937 * 0.00694) / 350)).toFixed(2)}</span> <span className="project-metric">gallons</span></p>
+                        <p><span className="project-required-data">{parseFloat(((project.area * 6 * 0.3937 * 0.00694) / 100)).toFixed(2)}</span> <span className="project-metric">quarts</span></p>
+                      </div>
+                    }
+                    {
+                      project.volume !== 0 &&
+                      <p>
+                        <span className="project-data-label">volume:</span> <span className="project-data">{(project.volume)}</span> <span className="project-metric">{project.unit}^3</span>
+                      </p>
+                    }
+                  </div>
+                }
               </ListItem>
               <div className="close-button">
                 <Button onClick={() => removeProject(project.uuid)}>
@@ -137,9 +166,6 @@ function Projects() {
         );
       })}
     </div>
-
-    </Container>
-
   );
 }
 

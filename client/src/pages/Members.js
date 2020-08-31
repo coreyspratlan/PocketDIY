@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Projects from "./Projects.js";
 import Nav from "../components/Nav";
 import SquareCard from "../components/InputCard/squareCard";
+import CubeCard from "../components/InputCard/cubeCard";
 import CircleCard from "../components/InputCard/circleCard";
 import TriangleCard from "../components/InputCard/triangleCard";
 import EquilateralTriangleCard from "../components/InputCard/EquilateralTriangleCard";
@@ -56,6 +57,9 @@ function Members() {
           </Route>
           <Route exact path="/square">
             <SquareCard />
+          </Route>
+          <Route exact path="/cube">
+            <CubeCard />
           </Route>
           <Route exact path="/triangle">
             <TriangleCard />

@@ -33,9 +33,9 @@ function Projects() {
         loadProjects());
   };
 
-  //   function (x) {
-  //     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  // }
+    function commaAddition (x) {
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
 
   return (
     <div className="container projects-container">
@@ -74,31 +74,31 @@ function Projects() {
                 {
                   project.width !== 0 &&
                   <p>
-                    <span className="project-data-label">Width:</span> <span className="project-data">{(project.width)}</span> <span className="project-metric">{project.unit}</span>
+                    <span className="project-data-label">Width:</span> <span className="project-data">{commaAddition(project.width)}</span> <span className="project-metric">{project.unit}</span>
                   </p>
                 }
                 {
                   project.height !== 0 &&
                   <p>
-                    <span className="project-data-label">Height:</span> <span className="project-data">{(project.height)}</span> <span className="project-metric">{project.unit}</span>
+                    <span className="project-data-label">Height:</span> <span className="project-data">{commaAddition(project.height)}</span> <span className="project-metric">{project.unit}</span>
                   </p>
                 }
                 {
                   project.depth !== 0 &&
                   <p>
-                    <span className="project-data-label">Depth:</span> <span className="project-data">{(project.depth)}</span> <span className="project-metric">{project.unit}</span>
+                    <span className="project-data-label">Depth:</span> <span className="project-data">{commaAddition(project.depth)}</span> <span className="project-metric">{project.unit}</span>
                   </p>
                 }
                 {
                   project.radius !== 0 &&
                   <p>
-                    <span className="project-data-label">Radius:</span> <span className="project-data">{(project.radius)}</span> <span className="project-metric">{project.unit}</span>
+                    <span className="project-data-label">Radius:</span> <span className="project-data">{commaAddition(project.radius)}</span> <span className="project-metric">{project.unit}</span>
                   </p>
                 }
                 {
                   project.perimeter !== 0 &&
                   <p>
-                    <span className="project-data-label">perimeter:</span> <span className="project-data">{(project.perimeter)}</span> <span className="project-metric">{project.unit}</span>
+                    <span className="project-data-label">perimeter:</span> <span className="project-data">{commaAddition(project.perimeter)}</span> <span className="project-metric">{project.unit}</span>
                   </p>
                 }
                 {project.shape !== "cube" &&
@@ -106,21 +106,21 @@ function Projects() {
                     {
                       project.area !== 0 &&
                       <p>
-                        <span className="project-data-label">area:</span> <span className="project-data">{(project.area)}</span> <span className="project-metric">{project.unit}^2</span>
+                        <span className="project-data-label">area:</span> <span className="project-data">{commaAddition(project.area)}</span> <span className="project-metric">{project.unit}^2</span>
                       </p>
                     }
                     {project.unit === "in" &&
                       <div>
                         <p className="project-required-label">Paint required:</p>
-                        <p><span className="project-required-data">{parseFloat(((project.area * 0.00694) / 350)).toFixed(2)}</span> <span className="project-metric">gallons</span></p>
-                        <p><span className="project-required-data">{parseFloat(((project.area * 0.00694) / 100)).toFixed(2)}</span> <span className="project-metric">quarts</span></p>
+                        <p><span className="project-required-data">{commaAddition(parseFloat(((project.area * 0.00694) / 350)).toFixed(2))}</span> <span className="project-metric">gallons</span></p>
+                        <p><span className="project-required-data">{commaAddition(parseFloat(((project.area * 0.00694) / 100)).toFixed(2))}</span> <span className="project-metric">quarts</span></p>
                       </div>
                     }
                     {project.unit === "cm" &&
                       <div>
                         <p className="project-required-label">Paint required:</p>
-                        <p><span className="project-required-data">{parseFloat(((project.area * 0.3937 * 0.00694) / 350)).toFixed(2)}</span> <span className="project-metric">gallons</span></p>
-                        <p><span className="project-required-data">{parseFloat(((project.area * 0.3937 * 0.00694) / 100)).toFixed(2)}</span> <span className="project-metric">quarts</span></p>
+                        <p><span className="project-required-data">{commaAddition(parseFloat(((project.area * 0.3937 * 0.00694) / 350)).toFixed(2))}</span> <span className="project-metric">gallons</span></p>
+                        <p><span className="project-required-data">{commaAddition(parseFloat(((project.area * 0.3937 * 0.00694) / 100)).toFixed(2))}</span> <span className="project-metric">quarts</span></p>
                       </div>
                     }
                   </div>
@@ -130,37 +130,37 @@ function Projects() {
                     {
                       project.area !== 0 &&
                       <p>
-                        <span className="project-data-label">surface area:</span> <span className="project-data">{(project.area)}</span> <span className="project-metric">{project.unit}^2</span>
+                        <span className="project-data-label">surface area:</span> <span className="project-data">{commaAddition(project.area)}</span> <span className="project-metric">{project.unit}^2</span>
                       </p>
                     }
                     {project.unit === "in" &&
                       <div>
                         <p className="project-required-label">Paint required:</p>
-                        <p><span className="project-required-data">{parseFloat(((project.area * 6 * 0.00694) / 350)).toFixed(2)}</span> <span className="project-metric">gallons</span></p>
-                        <p><span className="project-required-data">{parseFloat(((project.area * 6 * 0.00694) / 100)).toFixed(2)}</span> <span className="project-metric">quarts</span></p>
+                        <p><span className="project-required-data">{commaAddition(parseFloat(((project.area * 6 * 0.00694) / 350)).toFixed(2))}</span> <span className="project-metric">gallons</span></p>
+                        <p><span className="project-required-data">{commaAddition(parseFloat(((project.area * 6 * 0.00694) / 100)).toFixed(2))}</span> <span className="project-metric">quarts</span></p>
                       </div>
                     }
                     {project.unit === "cm" &&
                       <div>
                         <p className="project-required-label">Paint required:</p>
-                        <p><span className="project-required-data">{parseFloat(((project.area * 6 * 0.3937 * 0.00694) / 350)).toFixed(2)}</span> <span className="project-metric">gallons</span></p>
-                        <p><span className="project-required-data">{parseFloat(((project.area * 6 * 0.3937 * 0.00694) / 100)).toFixed(2)}</span> <span className="project-metric">quarts</span></p>
+                        <p><span className="project-required-data">{commaAddition(parseFloat(((project.area * 6 * 0.3937 * 0.00694) / 350)).toFixed(2))}</span> <span className="project-metric">gallons</span></p>
+                        <p><span className="project-required-data">{commaAddition(parseFloat(((project.area * 6 * 0.3937 * 0.00694) / 100)).toFixed(2))}</span> <span className="project-metric">quarts</span></p>
                       </div>
                     }
                     {
                       project.volume !== 0 &&
                       <p>
-                        <span className="project-data-label">volume:</span> <span className="project-data">{(project.volume)}</span> <span className="project-metric">{project.unit}^3</span>
+                        <span className="project-data-label">volume:</span> <span className="project-data">{commaAddition(project.volume)}</span> <span className="project-metric">{project.unit}^3</span>
                       </p>
                     }
                     {project.unit === "in" &&
                       <div>
-                        <p><span className="project-required-data">{parseFloat(project.volume * 0.004329).toFixed(2)}</span> <span className="project-metric">gallons</span></p>
+                        <p><span className="project-required-data">{commaAddition(parseFloat(project.volume * 0.004329).toFixed(2))}</span> <span className="project-metric">gallons</span></p>
                       </div>
                     }
                     {project.unit === "cm" &&
                       <div>
-                        <p><span className="project-required-data">{parseFloat(project.volume * 0.000264172).toFixed(2)}</span> <span className="project-metric">gallons</span></p>
+                        <p><span className="project-required-data">{commaAddition(parseFloat(project.volume * 0.000264172).toFixed(2))}</span> <span className="project-metric">gallons</span></p>
                       </div>
                     }
                   </div>

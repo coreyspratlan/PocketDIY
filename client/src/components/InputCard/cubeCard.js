@@ -130,7 +130,7 @@ class SquareCard extends Component {
         }
         return (
             <div className='inputareas'>
-                <h5> Square </h5>
+                <h5> Cube </h5>
                 {this.state.submit === "" &&
                     <Form className="cardInputs">
 
